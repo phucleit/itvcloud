@@ -29,8 +29,8 @@ export default function NewUser () {
   }, []);
 
   const loadRoles = async () => {
-    const result = await axios.get('https://backend.omcloud.vn/api/role');
-    setRoles(result.data.data);
+    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/roles');
+    setRoles(result.data);
   };
 
   const Role = roles.map(Role => Role)
@@ -75,7 +75,7 @@ export default function NewUser () {
       role_id: roleID
     }
 
-    axios.post('https://backend.omcloud.vn/api/user', newUser)
+    axios.post('https://624d0001d71863d7a8125b73.mockapi.io/users', newUser)
     .then(res => {
       alert('Thêm tài khoản thành công!');
       history.push('/app/users');

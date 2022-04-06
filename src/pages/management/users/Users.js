@@ -13,7 +13,7 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 
-const url_user = `https://backend.omcloud.vn/api/user/`;
+const url_user = `https://624d0001d71863d7a8125b73.mockapi.io/users/`;
 
 export default function UsersPage () {
   var classes = useStyles();
@@ -23,8 +23,8 @@ export default function UsersPage () {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get('https://backend.omcloud.vn/api/user');
-    setData(result.data.data);
+    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/users');
+    setData(result.data);
   };
 
   const handleDelete = (id) => {
@@ -46,7 +46,7 @@ export default function UsersPage () {
       field: 'role_id',
       headerName: 'Nhóm quyền',
       width: 250,
-      valueGetter: (params) => `${params.row.role.title}`
+      // valueGetter: (params) => `${params.row.role.title}`
     },
     {
       field: 'hanhDong',

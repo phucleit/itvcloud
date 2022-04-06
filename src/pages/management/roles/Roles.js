@@ -21,8 +21,8 @@ export default function RolesPage () {
   }, []);
 
   const loadRoles = async () => {
-    const result = await axios.get('https://backend.omcloud.vn/api/role');
-    setData(result.data.data);
+    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/roles');
+    setData(result.data);
   };
 
   const columns = [

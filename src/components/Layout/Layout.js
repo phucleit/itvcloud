@@ -20,10 +20,6 @@ import Users from '../../pages/management/users';
 import NewUser from '../../pages/management/newUser';
 import Roles from '../../pages/management/roles';
 import NewRole from '../../pages/management/newRole';
-import Services from "../../pages/services";
-import NewService from "../../pages/newService";
-import Constructions from "../../pages/constructions";
-import NewConstruction from "../../pages/newConstruction";
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -51,15 +47,6 @@ function Layout(props) {
               <Route path="/app/new-user" component={NewUser} />
               <Route path="/app/roles" component={Roles} />
               <Route path="/app/new-role" component={NewRole} />
-              {/* <Route
-                exact
-                path="/app"
-                render={() => <Redirect to="/app/services" />}
-              /> */}
-              <Route path="/app/services" component={Services} />
-              <Route path="/app/new-service" component={NewService} />
-              <Route path="/app/constructions" component={Constructions} />
-              <Route path="/app/new-construction" component={NewConstruction} />
             </Switch>
             <Box
               mt={5}

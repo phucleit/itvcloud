@@ -42,24 +42,24 @@ const structure = [
   },
   {
     id: 2,
-    label: "Quản lý dịch vụ",
-    link: "/app/services",
+    label: "Quản lý đơn hàng",
+    link: "/app/order",
     icon: <SettingsIcon />,
     children: [
-      { label: "Danh sách dịch vụ", link: "/app/services" },
-      { label: "Thêm dịch vụ mới", link: "/app/new-service" },
+      { label: "Danh sách đơn hàng", link: "/app/order" },
+      { label: "Thêm đơn hàng mới", link: "/app/new-order" },
     ],
   },
-  {
-    id: 3,
-    label: "Quản lý công trình",
-    link: "/app/constructions",
-    icon: <AppsIcon />,
-    children: [
-      { label: "Danh sách công trình", link: "/app/constructions" },
-      { label: "Thêm công trình mới", link: "/app/new-construction" },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   label: "Quản lý công trình",
+  //   link: "/app/constructions",
+  //   icon: <AppsIcon />,
+  //   children: [
+  //     { label: "Danh sách công trình", link: "/app/constructions" },
+  //     { label: "Thêm công trình mới", link: "/app/new-construction" },
+  //   ],
+  // },
   { id: 4, label: "Tạo báo cáo", link: "", icon: <ListAltIcon /> },
   { id: 5, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
 ];
