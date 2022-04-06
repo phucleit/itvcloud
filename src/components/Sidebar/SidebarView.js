@@ -33,12 +33,12 @@ const structure = [
   },
   {
     id: 2,
-    label: "Quản lý đơn hàng",
-    link: "/app/orders",
+    label: "Quản lý khách laptop",
+    link: "/app/khach-laptop",
     icon: <SettingsIcon />,
     children: [
-      { label: "Danh sách đơn hàng", link: "/app/orders" },
-      { label: "Thêm đơn hàng mới", link: "/app/new-order" },
+      { label: "Danh sách", link: "/app/khach-laptop" },
+      { label: "Thêm mới", link: "/app/them-khach-laptop" },
     ],
   },
   // {

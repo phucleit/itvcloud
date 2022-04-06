@@ -20,6 +20,9 @@ import Users from '../../pages/management/users';
 import NewUser from '../../pages/management/newUser';
 import Roles from '../../pages/management/roles';
 import NewRole from '../../pages/management/newRole';
+import KhachLaptopPage from '../../pages/khachlaptop/data';
+import NewKhachLaptop from '../../pages/khachlaptop/new';
+import UpdateKhachLaptop from '../../pages/khachlaptop/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -47,6 +50,9 @@ function Layout(props) {
               <Route path="/app/new-user" component={NewUser} />
               <Route path="/app/roles" component={Roles} />
               <Route path="/app/new-role" component={NewRole} />
+              <Route path="/app/khach-laptop" component={KhachLaptopPage} />
+              <Route path="/app/them-khach-laptop" component={NewKhachLaptop} />
+              <Route path="/app/sua-khach-laptop/:id" component={UpdateKhachLaptop} />
             </Switch>
             <Box
               mt={5}

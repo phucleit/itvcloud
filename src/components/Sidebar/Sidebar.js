@@ -6,7 +6,6 @@ import {
   Person as PersonAddIcon,
   Settings as SettingsIcon,
   Backup as BackupIcon,
-  Apps as AppsIcon,
   ListAlt as ListAltIcon
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
@@ -42,12 +41,12 @@ const structure = [
   },
   {
     id: 2,
-    label: "Quản lý đơn hàng",
-    link: "/app/order",
+    label: "Quản lý khách laptop",
+    link: "/app/khach-laptop",
     icon: <SettingsIcon />,
     children: [
-      { label: "Danh sách đơn hàng", link: "/app/order" },
-      { label: "Thêm đơn hàng mới", link: "/app/new-order" },
+      { label: "Danh sách", link: "/app/khach-laptop" },
+      { label: "Thêm mới", link: "/app/them-khach-laptop" },
     ],
   },
   // {
