@@ -41,16 +41,16 @@ const structure = [
       { label: "Thêm mới", link: "/app/them-khach-laptop" },
     ],
   },
-  // {
-  //   id: 3,
-  //   label: "Quản lý công trình",
-  //   link: "/app/constructions",
-  //   icon: <AppsIcon />,
-  //   children: [
-  //     { label: "Danh sách công trình", link: "/app/constructions" },
-  //     { label: "Thêm công trình mới", link: "/app/new-construction" },
-  //   ],
-  // },
+  {
+    id: 3,
+    label: "Quản lý khách website",
+    link: "/app/khach-website",
+    icon: <WebIcon />,
+    children: [
+      { label: "Danh sách", link: "/app/khach-website" },
+      { label: "Thêm mới", link: "/app/them-khach-website" },
+    ],
+  },
   { id: 4, label: "Tạo báo cáo", link: "", icon: <ListAltIcon /> },
   { id: 5, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
 ];

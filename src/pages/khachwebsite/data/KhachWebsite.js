@@ -13,23 +13,23 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 
-const url_khach_laptop = `https://624d0001d71863d7a8125b73.mockapi.io/khachlaptop/`;
+const url_khach_website = `https://624d0001d71863d7a8125b73.mockapi.io/khachwebsite/`;
 
-export default function KhachLaptopPage () {
+export default function KhachWebsitePage () {
   var classes = useStyles();
   const [data, setData] = useState([]);
   useEffect(() => {
-    loadKhachLaptop();
+    loadKhachWebsite();
   }, []);
 
-  const loadKhachLaptop = async () => {
-    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/khachlaptop');
+  const loadKhachWebsite = async () => {
+    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/khachwebsite');
     setData(result.data);
   };
 
   const handleDelete = (id) => {
     if (window.confirm('Bạn có muốn xóa không?')) {
-      axios.delete(url_khach_laptop + id)
+      axios.delete(url_khach_website + id)
         .then(res => {
           setData(data.filter((item) => item.id !== id));
         })
@@ -40,11 +40,11 @@ export default function KhachLaptopPage () {
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'hoten', headerName: 'Họ tên', width: 200 },
-    { field: 'phone', headerName: 'Số điện thoại', width: 200 },
-    { field: 'loaimay', headerName: 'Loại máy', width: 150 },
-    { field: 'tinhtrangmay', headerName: 'Tình trạng máy', width: 250 },
-    { field: 'chiphi', headerName: 'Chi phí', width: 150 },
-    { field: 'trangthai', headerName: 'Trạng thái', width: 200 },
+    { field: 'phone', headerName: 'Số điện thoại', width: 180 },
+    { field: 'website', headerName: 'Website', width: 250 },
+    { field: 'nhanvienphutrach', headerName: 'Nhân viên phụ trách', width: 250 },
+    { field: 'trangthai', headerName: 'Trạng thái', width: 180 },
+    { field: 'createdAt', headerName: 'Ngày đăng ký', width: 200 },
     {
       field: 'hanhDong',
       headerName: 'Hành động',
@@ -52,7 +52,7 @@ export default function KhachLaptopPage () {
       renderCell: (params) => {
         return (
           <div className={classes.buttonAction}>
-            <Link to={"/app/sua-khach-laptop/" + params.row.id}>
+            <Link to={"/app/sua-khach-website/" + params.row.id}>
               <button className={classes.userListEdit}>Edit</button>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
@@ -64,8 +64,8 @@ export default function KhachLaptopPage () {
 
   return (
     <>
-      <PageTitle title="Danh sách khách laptop" button={(
-        <Link to="/app/them-khach-laptop">
+      <PageTitle title="Danh sách khách website" button={(
+        <Link to="/app/them-khach-website">
           <Button
             variant="contained"
             size="medium"

@@ -23,6 +23,9 @@ import NewRole from '../../pages/management/newRole';
 import KhachLaptopPage from '../../pages/khachlaptop/data';
 import NewKhachLaptop from '../../pages/khachlaptop/new';
 import UpdateKhachLaptop from '../../pages/khachlaptop/update';
+import KhachWebsitePage from '../../pages/khachwebsite/data';
+import NewKhachWebsite from '../../pages/khachwebsite/new';
+import UpdateKhachWebsite from '../../pages/khachwebsite/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -53,6 +56,9 @@ function Layout(props) {
               <Route path="/app/khach-laptop" component={KhachLaptopPage} />
               <Route path="/app/them-khach-laptop" component={NewKhachLaptop} />
               <Route path="/app/sua-khach-laptop/:id" component={UpdateKhachLaptop} />
+              <Route path="/app/khach-website" component={KhachWebsitePage} />
+              <Route path="/app/them-khach-website" component={NewKhachWebsite} />
+              <Route path="/app/sua-khach-website/:id" component={UpdateKhachWebsite} />
             </Switch>
             <Box
               mt={5}
