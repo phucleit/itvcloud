@@ -18,6 +18,8 @@ const url_khach_laptop = `https://624d0001d71863d7a8125b73.mockapi.io/khachlapto
 export default function KhachLaptopPage () {
   var classes = useStyles();
   const [data, setData] = useState([]);
+  const [ query, setQuery ] = useState('');
+
   useEffect(() => {
     loadKhachLaptop();
   }, []);
@@ -62,6 +64,24 @@ export default function KhachLaptopPage () {
     },
   ];
 
+  const search = (rows) => {
+    return rows.filter(
+      (laptop) =>
+        laptop.hoten.toLowerCase().indexOf(query) > -1 ||
+        laptop.hoten.indexOf(query) > -1 ||
+        laptop.phone.toLowerCase().indexOf(query) > -1 ||
+        laptop.phone.indexOf(query) > -1 ||
+        laptop.loaimay.toLowerCase().indexOf(query) > -1 ||
+        laptop.loaimay.indexOf(query) > -1 ||
+        laptop.tinhtrangmay.toLowerCase().indexOf(query) > -1 ||
+        laptop.tinhtrangmay.indexOf(query) > -1 ||
+        laptop.chiphi.toLowerCase().indexOf(query) > -1 ||
+        laptop.chiphi.indexOf(query) > -1 ||
+        laptop.trangthai.toLowerCase().indexOf(query) > -1 ||
+        laptop.trangthai.indexOf(query) > -1
+    );
+  }
+
   return (
     <>
       <PageTitle title="Danh sách khách laptop" button={(
@@ -75,8 +95,14 @@ export default function KhachLaptopPage () {
           </Button>
         </Link>
       )} />
+      <div className={classes.search}>
+        <input type="text" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
+        <button type="submit" className={classes.searchButton}>
+          <i className="fas fa-search"></i>
+        </button>
+      </div>
       <DataGrid
-        rows={data}
+        rows={search(data)}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}

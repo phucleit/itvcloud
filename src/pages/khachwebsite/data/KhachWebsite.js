@@ -18,6 +18,8 @@ const url_khach_website = `https://624d0001d71863d7a8125b73.mockapi.io/khachwebs
 export default function KhachWebsitePage () {
   var classes = useStyles();
   const [data, setData] = useState([]);
+  const [ query, setQuery ] = useState('');
+
   useEffect(() => {
     loadKhachWebsite();
   }, []);
@@ -37,14 +39,21 @@ export default function KhachWebsitePage () {
     }
   }
 
+  function getDateTime(params) {
+    var timeStamp = params.row.createdAt;
+    var date = new Date(timeStamp).toLocaleDateString("vi-VI");
+    var time = new Date(timeStamp).toLocaleTimeString("vi-VI");
+    return date + ' - ' + time;
+  }
+
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'hoten', headerName: 'Họ tên', width: 200 },
     { field: 'phone', headerName: 'Số điện thoại', width: 180 },
     { field: 'website', headerName: 'Website', width: 250 },
     { field: 'nhanvienphutrach', headerName: 'Nhân viên phụ trách', width: 250 },
-    { field: 'trangthai', headerName: 'Trạng thái', width: 180 },
-    { field: 'createdAt', headerName: 'Ngày đăng ký', width: 200 },
+    { field: 'trangthai', headerName: 'Trạng thái', width: 180, className: 'asd' },
+    { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
     {
       field: 'hanhDong',
       headerName: 'Hành động',
@@ -62,6 +71,22 @@ export default function KhachWebsitePage () {
     },
   ];
 
+  const search = (rows) => {
+    return rows.filter(
+      (website) =>
+        website.hoten.toLowerCase().indexOf(query) > -1 ||
+        website.hoten.indexOf(query) > -1 ||
+        website.phone.toLowerCase().indexOf(query) > -1 ||
+        website.phone.indexOf(query) > -1 ||
+        website.website.toLowerCase().indexOf(query) > -1 ||
+        website.website.indexOf(query) > -1 ||
+        website.nhanvienphutrach.toLowerCase().indexOf(query) > -1 ||
+        website.nhanvienphutrach.indexOf(query) > -1 ||
+        website.trangthai.toLowerCase().indexOf(query) > -1 ||
+        website.trangthai.indexOf(query) > -1
+    );
+  }
+
   return (
     <>
       <PageTitle title="Danh sách khách website" button={(
@@ -75,13 +100,30 @@ export default function KhachWebsitePage () {
           </Button>
         </Link>
       )} />
+      <div className={classes.search}>
+        <input type="text" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
+        <button type="submit" className={classes.searchButton}>
+          <i className="fas fa-search"></i>
+        </button>
+      </div>
       <DataGrid
-        rows={data}
+        rows={search(data)}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         disableSelectionOnClick
         className={classes.userData}
+        // sortingOrder={['desc', 'asc']}
+        // initialState={{
+        //   sorting: {
+        //     sortModel: [
+        //       {
+        //         field: 'id',
+        //         sort: 'desc',
+        //       },
+        //     ],
+        //   },
+        // }}
       />
     </>
   );
