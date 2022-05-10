@@ -28,6 +28,7 @@ export default function UpdateKhachWebsite () {
   const [ trangthai, setTrangthai ] = useState('');
   const [ khuvuc, setKhuvuc ] = useState('');
   const [ ghichu, setGhichu ] = useState('');
+  const [ goidl, setGoidl ] = useState('');
 
   useEffect(() => {
     loadKhachWebsite();
@@ -42,6 +43,7 @@ export default function UpdateKhachWebsite () {
     setTrangthai(result.data.trangthai);
     setKhuvuc(result.data.khuvuc);
     setGhichu(result.data.ghichu);
+    setGoidl(result.data.goidl);
   };
 
   const handleUpdateKhachWebsite = (e) => {
@@ -76,6 +78,11 @@ export default function UpdateKhachWebsite () {
       return;
     }
 
+    if (goidl === "") {
+      alert("Vui lòng nhập gói dung lượng");
+      return;
+    }
+
     const updateKhachWebsite = {
       hoten: hoten,
       phone: phone,
@@ -84,6 +91,7 @@ export default function UpdateKhachWebsite () {
       trangthai: trangthai,
       khuvuc: khuvuc,
       ghichu: ghichu,
+      goidl: goidl
     }
 
     axios.put(url + currentId, updateKhachWebsite)
@@ -121,6 +129,10 @@ export default function UpdateKhachWebsite () {
         <div className={classes.newUserItem}>
             <label className={classes.label}>Khu vực (*)</label>
             <input type="text" name="khuvuc" className={classes.inputName} value={khuvuc} onChange={(e) => setKhuvuc(e.target.value)} placeholder='Nhập khu vực...' />
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Gói dung lượng (*)</label>
+            <input type="text" name="goidl" className={classes.inputName} value={goidl} onChange={(e) => setGoidl(e.target.value)} placeholder='Nhập gói dung lượng...' />
         </div>
         <div className={classes.newUserItem}>
             <label className={classes.label}>Ghi chú</label>

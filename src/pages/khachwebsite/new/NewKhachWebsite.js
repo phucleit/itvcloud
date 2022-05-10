@@ -22,6 +22,7 @@ export default function NewKhachWebsite () {
   const [ trangthai, setTrangthai ] = useState('');
   const [ khuvuc, setKhuvuc ] = useState('');
   const [ ghichu, setGhichu ] = useState('');
+  const [ goidl, setGoidl ] = useState('');
 
   const handleAddKhachWebsite = (e) => {
     e.preventDefault();
@@ -55,6 +56,11 @@ export default function NewKhachWebsite () {
       return;
     }
 
+    if (goidl === "") {
+      alert("Vui lòng nhập gói dung lượng");
+      return;
+    }
+
     const newKhachwebsite = {
       hoten: hoten,
       phone: phone,
@@ -63,6 +69,7 @@ export default function NewKhachWebsite () {
       trangthai: trangthai,
       khuvuc: khuvuc,
       ghichu: ghichu,
+      goidl: goidl
     }
 
     axios.post('https://624d0001d71863d7a8125b73.mockapi.io/khachwebsite', newKhachwebsite)
@@ -100,6 +107,10 @@ export default function NewKhachWebsite () {
         <div className={classes.newUserItem}>
             <label className={classes.label}>Khu vực (*)</label>
             <input type="text" name="khuvuc" className={classes.inputName} value={khuvuc} onChange={(e) => setKhuvuc(e.target.value)} placeholder='Nhập khu vực...' />
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Gói dung lượng (*)</label>
+            <input type="text" name="goidl" className={classes.inputName} value={goidl} onChange={(e) => setGoidl(e.target.value)} placeholder='Nhập gói dung lượng...' />
         </div>
         <div className={classes.newUserItem}>
             <label className={classes.label}>Ghi chú</label>
