@@ -13,7 +13,7 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 
-const url_khach_website = `https://624d0001d71863d7a8125b73.mockapi.io/khachwebsite/`;
+const url_khach_website = `http://localhost:8000/website/`;
 
 export default function KhachWebsitePage () {
   var classes = useStyles();
@@ -25,8 +25,9 @@ export default function KhachWebsitePage () {
   }, []);
 
   const loadKhachWebsite = async () => {
-    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/khachwebsite');
+    const result = await axios.get('http://localhost:8000/website');
     setData(result.data);
+
   };
 
   const handleDelete = (id) => {
@@ -39,12 +40,12 @@ export default function KhachWebsitePage () {
     }
   }
 
-  function getDateTime(params) {
-    var timeStamp = params.row.createdAt;
-    var date = new Date(timeStamp).toLocaleDateString("vi-VI");
-    var time = new Date(timeStamp).toLocaleTimeString("vi-VI");
-    return date + ' - ' + time;
-  }
+  // function getDateTime(params) {
+  //   var timeStamp = params.row.createdAt;
+  //   var date = new Date(timeStamp).toLocaleDateString("vi-VI");
+  //   var time = new Date(timeStamp).toLocaleTimeString("vi-VI");
+  //   return date + ' - ' + time;
+  // }
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -52,8 +53,9 @@ export default function KhachWebsitePage () {
     { field: 'phone', headerName: 'Số điện thoại', width: 180 },
     { field: 'website', headerName: 'Website', width: 250 },
     { field: 'nhanvienphutrach', headerName: 'Nhân viên phụ trách', width: 250 },
-    { field: 'trangthai', headerName: 'Trạng thái', width: 180, className: 'asd' },
-    { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
+    { field: 'trangthai', headerName: 'Trạng thái', width: 180 },
+    { field: 'goidungluong', headerName: 'Gói dung lượng', width: 120 },
+    // { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
     {
       field: 'hanhDong',
       headerName: 'Hành động',

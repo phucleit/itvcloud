@@ -68,11 +68,11 @@ export default function NewKhachWebsite () {
       nhanvienphutrach: nhanvienphutrach,
       trangthai: trangthai,
       khuvuc: khuvuc,
+      goidungluong: goidl,
       ghichu: ghichu,
-      goidl: goidl
     }
 
-    axios.post('https://624d0001d71863d7a8125b73.mockapi.io/khachwebsite', newKhachwebsite)
+    axios.post('http://localhost:8000/website', newKhachwebsite)
     .then(res => {
       alert('Thêm khách thành công!');
       history.push('/app/khach-website');
