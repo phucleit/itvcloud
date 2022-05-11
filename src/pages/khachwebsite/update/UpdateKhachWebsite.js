@@ -12,7 +12,7 @@ import {
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 
-const url = 'https://624d0001d71863d7a8125b73.mockapi.io/khachwebsite/';
+const url = 'http://localhost:8000/website/';
 
 export default function UpdateKhachWebsite () {
   var classes = useStyles();
@@ -42,8 +42,8 @@ export default function UpdateKhachWebsite () {
     setNhanvienphutrach(result.data.nhanvienphutrach);
     setTrangthai(result.data.trangthai);
     setKhuvuc(result.data.khuvuc);
+    setGoidl(result.data.goidungluong);
     setGhichu(result.data.ghichu);
-    setGoidl(result.data.goidl);
   };
 
   const handleUpdateKhachWebsite = (e) => {
@@ -91,7 +91,7 @@ export default function UpdateKhachWebsite () {
       trangthai: trangthai,
       khuvuc: khuvuc,
       ghichu: ghichu,
-      goidl: goidl
+      goidungluong: goidl
     }
 
     axios.put(url + currentId, updateKhachWebsite)
