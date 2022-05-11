@@ -68,10 +68,10 @@ export default function NewKhachLaptop () {
       noidung: noidung,
       chiphi: chiphi,
       trangthai: trangthai,
-      phuongthuctt: phuongthuctt,
+      phuongthucthanhtoan: phuongthuctt,
     }
 
-    axios.post('https://624d0001d71863d7a8125b73.mockapi.io/khachlaptop', newKhachlaptop)
+    axios.post('http://localhost:8000/laptop', newKhachlaptop)
     .then(res => {
       alert('Thêm khách thành công!');
       history.push('/app/khach-laptop');

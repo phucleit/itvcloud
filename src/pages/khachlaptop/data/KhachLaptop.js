@@ -13,7 +13,7 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 
-const url_khach_laptop = `https://624d0001d71863d7a8125b73.mockapi.io/khachlaptop/`;
+const url_khach_laptop = `http://localhost:8000/laptop/`;
 
 export default function KhachLaptopPage () {
   var classes = useStyles();
@@ -25,7 +25,7 @@ export default function KhachLaptopPage () {
   }, []);
 
   const loadKhachLaptop = async () => {
-    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/khachlaptop');
+    const result = await axios.get('http://localhost:8000/laptop');
     setData(result.data);
   };
 

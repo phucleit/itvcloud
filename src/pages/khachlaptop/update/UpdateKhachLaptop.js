@@ -12,7 +12,7 @@ import {
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 
-const url = 'https://624d0001d71863d7a8125b73.mockapi.io/khachlaptop/';
+const url = 'http://localhost:8000/laptop/';
 
 export default function UpdateKhachLaptop () {
   var classes = useStyles();
@@ -112,7 +112,7 @@ export default function UpdateKhachLaptop () {
       noidung: noidung,
       chiphi: chiphi,
       trangthai: trangthai,
-      phuongthuctt: phuongthuctt,
+      phuongthucthanhtoan: phuongthuctt,
     }
 
     axios.put(url + currentId, updateKhachlaptop)
