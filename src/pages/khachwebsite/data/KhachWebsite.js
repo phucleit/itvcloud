@@ -13,7 +13,7 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 
-const url_khach_website = `http://localhost:8000/website/`;
+const url_khach_website = `http://localhost:8000/api/website/`;
 
 export default function KhachWebsitePage () {
   var classes = useStyles();
@@ -25,7 +25,7 @@ export default function KhachWebsitePage () {
   }, []);
 
   const loadKhachWebsite = async () => {
-    const result = await axios.get('http://localhost:8000/website');
+    const result = await axios.get('http://localhost:8000/api/website');
     setData(result.data);
 
   };

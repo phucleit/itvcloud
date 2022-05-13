@@ -71,7 +71,7 @@ export default function NewKhachLaptop () {
       phuongthucthanhtoan: phuongthuctt,
     }
 
-    axios.post('http://localhost:8000/laptop', newKhachlaptop)
+    axios.post('http://localhost:8000/api/laptop', newKhachlaptop)
     .then(res => {
       alert('Thêm khách thành công!');
       history.push('/app/khach-laptop');

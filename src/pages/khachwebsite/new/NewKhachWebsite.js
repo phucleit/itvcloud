@@ -72,7 +72,7 @@ export default function NewKhachWebsite () {
       ghichu: ghichu,
     }
 
-    axios.post('http://localhost:8000/website', newKhachwebsite)
+    axios.post('http://localhost:8000/api/website', newKhachwebsite)
     .then(res => {
       alert('Thêm khách thành công!');
       history.push('/app/khach-website');
