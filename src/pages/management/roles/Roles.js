@@ -26,7 +26,6 @@ export default function RolesPage () {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
     { field: 'title', headerName: 'Tên nhóm', width: 250 },
     { field: 'description', headerName: 'Mô tả', width: 650 },
   ];

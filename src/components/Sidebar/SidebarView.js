@@ -8,9 +8,9 @@ import {
   Home as HomeIcon,
   ArrowBack as ArrowBackIcon,
   Person as PersonAddIcon,
+  Laptop as LaptopIcon,
   Settings as SettingsIcon,
   Backup as BackupIcon,
-  Apps as AppsIcon,
   ListAlt as ListAltIcon
 } from "@material-ui/icons";
 import classNames from 'classnames';
@@ -35,7 +35,7 @@ const structure = [
     id: 2,
     label: "Quản lý khách laptop",
     link: "/app/khach-laptop",
-    icon: <SettingsIcon />,
+    icon: <LaptopIcon />,
     children: [
       { label: "Danh sách", link: "/app/khach-laptop" },
       { label: "Thêm mới", link: "/app/them-khach-laptop" },
@@ -51,8 +51,18 @@ const structure = [
       { label: "Thêm mới", link: "/app/them-khach-website" },
     ],
   },
-  { id: 4, label: "Tạo báo cáo", link: "", icon: <ListAltIcon /> },
-  { id: 5, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
+  {
+    id: 4,
+    label: "Dịch vụ",
+    link: "/app/dich-vu",
+    icon: <SettingsIcon />,
+    children: [
+      { label: "Danh sách", link: "/app/dich-vu" },
+      { label: "Thêm mới", link: "/app/them-dich-vu" },
+    ],
+  },
+  { id: 5, label: "Tạo báo cáo", link: "", icon: <ListAltIcon /> },
+  { id: 6, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
 ];
 
 const SidebarView = ({ classes, theme, toggleSidebar, isSidebarOpened, isPermanent, location }) => {

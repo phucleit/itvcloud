@@ -1,0 +1,6 @@
+{
+  "name": "UpdateService",
+  "version": "0.0.0",
+  "main": "UpdateService.js",
+  "private": true
+}

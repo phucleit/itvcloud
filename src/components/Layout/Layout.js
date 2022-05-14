@@ -26,6 +26,9 @@ import UpdateKhachLaptop from '../../pages/khachlaptop/update';
 import KhachWebsitePage from '../../pages/khachwebsite/data';
 import NewKhachWebsite from '../../pages/khachwebsite/new';
 import UpdateKhachWebsite from '../../pages/khachwebsite/update';
+import ServicePage from '../../pages/service/data';
+import NewService from '../../pages/service/new';
+import UpdateService from '../../pages/service/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -59,6 +62,9 @@ function Layout(props) {
               <Route path="/app/khach-website" component={KhachWebsitePage} />
               <Route path="/app/them-khach-website" component={NewKhachWebsite} />
               <Route path="/app/sua-khach-website/:id" component={UpdateKhachWebsite} />
+              <Route path="/app/dich-vu" component={ServicePage} />
+              <Route path="/app/them-dich-vu" component={NewService} />
+              <Route path="/app/sua-dich-vu/:id" component={UpdateService} />
             </Switch>
             <Box
               mt={5}

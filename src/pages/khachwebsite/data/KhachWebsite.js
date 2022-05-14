@@ -48,7 +48,6 @@ export default function KhachWebsitePage () {
   // }
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
     { field: 'hoten', headerName: 'Họ tên', width: 200 },
     { field: 'phone', headerName: 'Số điện thoại', width: 180 },
     { field: 'website', headerName: 'Website', width: 250 },

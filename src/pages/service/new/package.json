@@ -1,0 +1,6 @@
+{
+  "name": "NewService",
+  "version": "0.0.0",
+  "main": "NewService.js",
+  "private": true
+}

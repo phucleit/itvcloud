@@ -13,23 +13,25 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 
-const url_user = `https://624d0001d71863d7a8125b73.mockapi.io/users/`;
+const url_service = `http://localhost:8000/api/service/`;
 
-export default function UsersPage () {
+export default function ServicePage () {
   var classes = useStyles();
   const [data, setData] = useState([]);
+  const [ query, setQuery ] = useState('');
+
   useEffect(() => {
-    loadUsers();
+    loadService();
   }, []);
 
-  const loadUsers = async () => {
-    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/users');
+  const loadService = async () => {
+    const result = await axios.get('http://localhost:8000/api/service');
     setData(result.data);
   };
 
   const handleDelete = (id) => {
     if (window.confirm('Bạn có muốn xóa không?')) {
-      axios.delete(url_user + id)
+      axios.delete(url_service + id)
         .then(res => {
           setData(data.filter((item) => item.id !== id));
         })
@@ -38,15 +40,8 @@ export default function UsersPage () {
   }
 
   const columns = [
-    { field: 'name', headerName: 'Họ tên', width: 250 },
-    { field: 'username', headerName: 'Username', width: 250 },
-    { field: 'email', headerName: 'Email', width: 250 },
-    {
-      field: 'role_id',
-      headerName: 'Nhóm quyền',
-      width: 250,
-      // valueGetter: (params) => `${params.row.role.title}`
-    },
+    // { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'tengoidv', headerName: 'Tên gói dịch vụ', width: 200 },
     {
       field: 'hanhDong',
       headerName: 'Hành động',
@@ -54,7 +49,7 @@ export default function UsersPage () {
       renderCell: (params) => {
         return (
           <div className={classes.buttonAction}>
-            <Link to={"/app/users/" + params.row.id}>
+            <Link to={"/app/sua-dich-vu/" + params.row.id}>
               <button className={classes.userListEdit}>Edit</button>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
@@ -64,10 +59,18 @@ export default function UsersPage () {
     },
   ];
 
+  const search = (rows) => {
+    return rows.filter(
+      (service) =>
+        service.tengoidv.toLowerCase().indexOf(query) > -1 ||
+        service.tengoidv.indexOf(query) > -1
+    );
+  }
+
   return (
     <>
-      <PageTitle title="Danh sách tài khoản" button={(
-        <Link to="/app/new-user">
+      <PageTitle title="Danh sách dịch vụ" button={(
+        <Link to="/app/them-dich-vu">
           <Button
             variant="contained"
             size="medium"
@@ -77,8 +80,14 @@ export default function UsersPage () {
           </Button>
         </Link>
       )} />
+      <div className={classes.search}>
+        <input type="text" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
+        <button type="submit" className={classes.searchButton}>
+          <i className="fas fa-search"></i>
+        </button>
+      </div>
       <DataGrid
-        rows={data}
+        rows={search(data)}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
