@@ -22,6 +22,7 @@ export default function UpdateKhachWebsite () {
   const currentId = paramId.id;
 
   const [ hoten, setHoten ] = useState('');
+  const [ cmnd, setCmnd ] = useState('');
   const [ phone, setPhone ] = useState('');
   const [ website, setWebsite ] = useState('');
   const [ nhanvienphutrach, setNhanvienphutrach ] = useState('');
@@ -30,26 +31,47 @@ export default function UpdateKhachWebsite () {
   const [ ghichu, setGhichu ] = useState('');
   const [ goidl, setGoidl ] = useState('');
 
+  const [service, setService] = useState([]);
+  const [serviceID, setServiceID] = useState();
+
   useEffect(() => {
     loadKhachWebsite();
+    loadServices();
   }, []);
 
   const loadKhachWebsite = async () => {
     const result = await axios.get(url + currentId);
     setHoten(result.data.hoten);
+    setCmnd(result.data.cmnd);
     setPhone(result.data.phone);
     setWebsite(result.data.website);
     setNhanvienphutrach(result.data.nhanvienphutrach);
-    setTrangthai(result.data.trangthai);
     setKhuvuc(result.data.khuvuc);
     setGoidl(result.data.goidungluong);
+    setServiceID(result.data.service.id);
     setGhichu(result.data.ghichu);
   };
+
+  const loadServices = async () => {
+    const result = await axios.get('http://localhost:8000/api/service');
+    setService(result.data);
+  };
+
+  const Service = service.map(Service => Service);
+
+  const handleServiceChange = (e) => {
+    setServiceID(e.target.value);
+  }
 
   const handleUpdateKhachWebsite = (e) => {
     e.preventDefault();
     if (hoten === "") {
       alert("Vui lòng nhập họ tên");
+      return;
+    }
+
+    if (cmnd === "") {
+      alert("Vui lòng nhập cmnd");
       return;
     }
 
@@ -68,30 +90,21 @@ export default function UpdateKhachWebsite () {
       return;
     }
 
-    if (trangthai === "") {
-      alert("Vui lòng nhập trạng thái");
-      return;
-    }
-
     if (khuvuc === "") {
       alert("Vui lòng nhập khu vực");
       return;
     }
 
-    if (goidl === "") {
-      alert("Vui lòng nhập gói dung lượng");
-      return;
-    }
-
     const updateKhachWebsite = {
       hoten: hoten,
+      cmnd: cmnd,
       phone: phone,
       website: website,
       nhanvienphutrach: nhanvienphutrach,
-      trangthai: trangthai,
       khuvuc: khuvuc,
-      ghichu: ghichu,
-      goidungluong: goidl
+      goidungluong: goidl,
+      service: serviceID,
+      ghichu: ghichu
     }
 
     axios.put(url + currentId, updateKhachWebsite)
@@ -106,9 +119,13 @@ export default function UpdateKhachWebsite () {
     <>
       <PageTitle title="Cập nhật khách website" />
       <div className={classes.newUserForm}>
-      <div className={classes.newUserItem}>
+        <div className={classes.newUserItem}>
             <label className={classes.label}>Họ tên (*)</label>
             <input type="text" name="hoten" className={classes.inputName} value={hoten} onChange={(e) => setHoten(e.target.value)} placeholder='Nhập họ tên...' />
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Cmnd (*)</label>
+            <input type="text" name="cmnd" className={classes.inputName} value={cmnd} onChange={(e) => setCmnd(e.target.value)} placeholder='Nhập cmnd...' />
         </div>
         <div className={classes.newUserItem}>
             <label className={classes.label}>Số điện thoại (*)</label>
@@ -123,16 +140,26 @@ export default function UpdateKhachWebsite () {
             <input type="text" name="nhanvienphutrach" className={classes.inputName} value={nhanvienphutrach} onChange={(e) => setNhanvienphutrach(e.target.value)} placeholder='Nhập nhân viên phụ trách...' />
         </div>
         <div className={classes.newUserItem}>
-            <label className={classes.label}>Trạng thái (*)</label>
-            <input type="text" name="trangthai" className={classes.inputName} value={trangthai} onChange={(e) => setTrangthai(e.target.value)} placeholder='Nhập trạng thái...' />
-        </div>
-        <div className={classes.newUserItem}>
             <label className={classes.label}>Khu vực (*)</label>
             <input type="text" name="khuvuc" className={classes.inputName} value={khuvuc} onChange={(e) => setKhuvuc(e.target.value)} placeholder='Nhập khu vực...' />
         </div>
         <div className={classes.newUserItem}>
-            <label className={classes.label}>Gói dung lượng (*)</label>
+            <label className={classes.label}>Gói dung lượng</label>
             <input type="text" name="goidl" className={classes.inputName} value={goidl} onChange={(e) => setGoidl(e.target.value)} placeholder='Nhập gói dung lượng...' />
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Tên gói dịch vụ</label>
+            <select
+              onChange={e => handleServiceChange(e)}
+              className={classes.newUserType}
+              id="newServiceType"
+              value={serviceID}
+            >
+              <option>-----</option>
+              {
+                Service.map((name, key) => <option key={name.id} value={name.id}>{name.tengoidv}</option>)
+              }
+            </select>
         </div>
         <div className={classes.newUserItem}>
             <label className={classes.label}>Ghi chú</label>

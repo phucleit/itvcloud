@@ -49,11 +49,16 @@ export default function KhachWebsitePage () {
 
   const columns = [
     { field: 'hoten', headerName: 'Họ tên', width: 200 },
-    { field: 'phone', headerName: 'Số điện thoại', width: 180 },
+    { field: 'phone', headerName: 'Số điện thoại', width: 150 },
     { field: 'website', headerName: 'Website', width: 250 },
-    { field: 'nhanvienphutrach', headerName: 'Nhân viên phụ trách', width: 250 },
-    { field: 'trangthai', headerName: 'Trạng thái', width: 180 },
-    { field: 'goidungluong', headerName: 'Gói dung lượng', width: 120 },
+    { field: 'nhanvienphutrach', headerName: 'Nhân viên phụ trách', width: 200 },
+    { 
+      field: 'service', 
+      headerName: 'Gói dịch vụ', 
+      width: 180, 
+      valueGetter: (params) => `${params.row.service.tengoidv}` 
+    },
+    { field: 'goidungluong', headerName: 'Gói dung lượng', width: 150 },
     // { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
     {
       field: 'hanhDong',

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button
 } from "@material-ui/core";
@@ -16,18 +16,41 @@ export default function NewKhachWebsite () {
   let history  = useHistory();
 
   const [ hoten, setHoten ] = useState('');
+  const [ cmnd, setCmnd ] = useState('');
   const [ phone, setPhone ] = useState('');
   const [ website, setWebsite ] = useState('');
   const [ nhanvienphutrach, setNhanvienphutrach ] = useState('');
-  const [ trangthai, setTrangthai ] = useState('');
   const [ khuvuc, setKhuvuc ] = useState('');
-  const [ ghichu, setGhichu ] = useState('');
   const [ goidl, setGoidl ] = useState('');
+  const [ ghichu, setGhichu ] = useState('');
+
+  const [service, setService] = useState([]);
+  const [serviceID, setServiceID] = useState('');
+
+  useEffect(() => {
+    loadServices();
+  }, []);
+
+  const loadServices = async () => {
+    const result = await axios.get('http://localhost:8000/api/service');
+    setService(result.data);
+  };
+
+  const Service = service.map(Service => Service);
+
+  const handleServiceChange = (e) => {
+    setServiceID(e.target.value);
+  }
 
   const handleAddKhachWebsite = (e) => {
     e.preventDefault();
     if (hoten === "") {
       alert("Vui lòng nhập họ tên");
+      return;
+    }
+
+    if (cmnd === "") {
+      alert("Vui lòng nhập cmnd");
       return;
     }
 
@@ -46,30 +69,21 @@ export default function NewKhachWebsite () {
       return;
     }
 
-    if (trangthai === "") {
-      alert("Vui lòng nhập trạng thái");
-      return;
-    }
-
     if (khuvuc === "") {
       alert("Vui lòng nhập khu vực");
       return;
     }
 
-    if (goidl === "") {
-      alert("Vui lòng nhập gói dung lượng");
-      return;
-    }
-
     const newKhachwebsite = {
       hoten: hoten,
+      cmnd: cmnd,
       phone: phone,
       website: website,
       nhanvienphutrach: nhanvienphutrach,
-      trangthai: trangthai,
       khuvuc: khuvuc,
       goidungluong: goidl,
-      ghichu: ghichu,
+      service: serviceID,
+      ghichu: ghichu
     }
 
     axios.post('http://localhost:8000/api/website', newKhachwebsite)
@@ -89,6 +103,10 @@ export default function NewKhachWebsite () {
             <input type="text" name="hoten" className={classes.inputName} value={hoten} onChange={(e) => setHoten(e.target.value)} placeholder='Nhập họ tên...' />
         </div>
         <div className={classes.newUserItem}>
+            <label className={classes.label}>Cmnd (*)</label>
+            <input type="text" name="cmnd" className={classes.inputName} value={cmnd} onChange={(e) => setCmnd(e.target.value)} placeholder='Nhập cmnd...' />
+        </div>
+        <div className={classes.newUserItem}>
             <label className={classes.label}>Số điện thoại (*)</label>
             <input type="text" name="phone" className={classes.inputName} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Nhập số điện thoại...' />
         </div>
@@ -101,16 +119,25 @@ export default function NewKhachWebsite () {
             <input type="text" name="nhanvienphutrach" className={classes.inputName} value={nhanvienphutrach} onChange={(e) => setNhanvienphutrach(e.target.value)} placeholder='Nhập nhân viên phụ trách...' />
         </div>
         <div className={classes.newUserItem}>
-            <label className={classes.label}>Trạng thái (*)</label>
-            <input type="text" name="trangthai" className={classes.inputName} value={trangthai} onChange={(e) => setTrangthai(e.target.value)} placeholder='Nhập trạng thái...' />
-        </div>
-        <div className={classes.newUserItem}>
             <label className={classes.label}>Khu vực (*)</label>
             <input type="text" name="khuvuc" className={classes.inputName} value={khuvuc} onChange={(e) => setKhuvuc(e.target.value)} placeholder='Nhập khu vực...' />
         </div>
         <div className={classes.newUserItem}>
-            <label className={classes.label}>Gói dung lượng (*)</label>
+            <label className={classes.label}>Gói dung lượng</label>
             <input type="text" name="goidl" className={classes.inputName} value={goidl} onChange={(e) => setGoidl(e.target.value)} placeholder='Nhập gói dung lượng...' />
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Tên gói dịch vụ</label>
+            <select
+              onChange={e => handleServiceChange(e)}
+              className={classes.newUserType}
+              id="newServiceType"
+            >
+              <option>-----</option>
+              {
+                Service.map((name, key) => <option key={name.id} value={name.id}>{name.tengoidv}</option>)
+              }
+            </select>
         </div>
         <div className={classes.newUserItem}>
             <label className={classes.label}>Ghi chú</label>
