@@ -11,9 +11,9 @@ import {
 import useStyles from "./styles";
 
 // components
-import PageTitle from "../../../components/PageTitle/PageTitle";
+import PageTitle from "../../../../components/PageTitle/PageTitle";
 
-const url_user = `https://624d0001d71863d7a8125b73.mockapi.io/users/`;
+const url_user = `http://localhost:8000/api/user/`;
 
 export default function UsersPage () {
   var classes = useStyles();
@@ -23,7 +23,7 @@ export default function UsersPage () {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/users');
+    const result = await axios.get('http://localhost:8000/api/user');
     setData(result.data);
   };
 
@@ -38,15 +38,15 @@ export default function UsersPage () {
   }
 
   const columns = [
-    { field: 'name', headerName: 'Họ tên', width: 250 },
+    { field: 'hoten', headerName: 'Họ tên', width: 250 },
     { field: 'username', headerName: 'Username', width: 250 },
     { field: 'email', headerName: 'Email', width: 250 },
-    {
-      field: 'role_id',
-      headerName: 'Nhóm quyền',
-      width: 250,
-      // valueGetter: (params) => `${params.row.role.title}`
-    },
+    // {
+    //   field: 'role_id',
+    //   headerName: 'Nhóm quyền',
+    //   width: 250,
+    //   // valueGetter: (params) => `${params.row.role.title}`
+    // },
     {
       field: 'hanhDong',
       headerName: 'Hành động',
@@ -54,7 +54,7 @@ export default function UsersPage () {
       renderCell: (params) => {
         return (
           <div className={classes.buttonAction}>
-            <Link to={"/app/users/" + params.row.id}>
+            <Link to={"/app/sua-tai-khoan/" + params.row.id}>
               <button className={classes.userListEdit}>Edit</button>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
@@ -67,7 +67,7 @@ export default function UsersPage () {
   return (
     <>
       <PageTitle title="Danh sách tài khoản" button={(
-        <Link to="/app/new-user">
+        <Link to="/app/them-tai-khoan">
           <Button
             variant="contained"
             size="medium"

@@ -26,7 +26,6 @@ export default function UpdateKhachWebsite () {
   const [ phone, setPhone ] = useState('');
   const [ website, setWebsite ] = useState('');
   const [ nhanvienphutrach, setNhanvienphutrach ] = useState('');
-  const [ trangthai, setTrangthai ] = useState('');
   const [ khuvuc, setKhuvuc ] = useState('');
   const [ ghichu, setGhichu ] = useState('');
   const [ goidl, setGoidl ] = useState('');

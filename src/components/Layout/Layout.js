@@ -16,10 +16,11 @@ import Sidebar from "../Sidebar";
 
 // pages
 import Dashboard from "../../pages/dashboard";
-import Users from '../../pages/management/users';
-import NewUser from '../../pages/management/newUser';
-import Roles from '../../pages/management/roles';
-import NewRole from '../../pages/management/newRole';
+import Users from '../../pages/management/users/data';
+import NewUser from '../../pages/management/users/new';
+import UpdateUser from '../../pages/management/users/update';
+import Roles from '../../pages/management/roles/data';
+import NewRole from '../../pages/management/roles/new';
 import KhachLaptopPage from '../../pages/khachlaptop/data';
 import NewKhachLaptop from '../../pages/khachlaptop/new';
 import UpdateKhachLaptop from '../../pages/khachlaptop/update';
@@ -52,8 +53,9 @@ function Layout(props) {
             <div className={classes.fakeToolbar} />
             <Switch>
               <Route path="/app/dashboard" component={Dashboard} />
-              <Route path="/app/users" component={Users} />
-              <Route path="/app/new-user" component={NewUser} />
+              <Route path="/app/tai-khoan" component={Users} />
+              <Route path="/app/them-tai-khoan" component={NewUser} />
+              <Route path="/app/sua-tai-khoan/:id" component={UpdateUser} />
               <Route path="/app/roles" component={Roles} />
               <Route path="/app/new-role" component={NewRole} />
               <Route path="/app/khach-laptop" component={KhachLaptopPage} />

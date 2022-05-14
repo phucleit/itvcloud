@@ -32,11 +32,11 @@ const structure = [
   {
     id: 1,
     label: "Tài khoản",
-    link: "/app/users",
+    link: "/app/tai-khoan",
     icon: <PersonAddIcon />,
     children: [
-      { label: "Danh sách tài khoản", link: "/app/users" },
-      { label: "Thêm tài khoản", link: "/app/new-user" },
+      { label: "Danh sách tài khoản", link: "/app/tai-khoan" },
+      { label: "Thêm tài khoản", link: "/app/them-tai-khoan" },
       { label: "Nhóm người dùng", link: "/app/roles" },
       { label: "Thêm nhóm người dùng", link: "/app/new-role" },
     ],
