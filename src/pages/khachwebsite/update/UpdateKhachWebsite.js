@@ -12,7 +12,7 @@ import {
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 
-const url = 'http://localhost:8000/api/website/';
+const url = 'http://103.57.222.114:10000/api/website/';
 
 export default function UpdateKhachWebsite () {
   var classes = useStyles();
@@ -52,7 +52,7 @@ export default function UpdateKhachWebsite () {
   };
 
   const loadServices = async () => {
-    const result = await axios.get('http://localhost:8000/api/service');
+    const result = await axios.get('http://103.57.222.114:10000/api/service');
     setService(result.data);
   };
 

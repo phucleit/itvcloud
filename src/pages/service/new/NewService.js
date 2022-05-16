@@ -30,7 +30,7 @@ export default function NewService () {
       motagoidv: motagoidv,
     }
 
-    axios.post('http://localhost:8000/api/service', newService)
+    axios.post('http://103.57.222.114:10000/api/service', newService)
     .then(res => {
       alert('Thêm dịch vụ thành công!');
       history.push('/app/dich-vu');

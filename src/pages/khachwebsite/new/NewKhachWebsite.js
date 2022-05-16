@@ -32,7 +32,7 @@ export default function NewKhachWebsite () {
   }, []);
 
   const loadServices = async () => {
-    const result = await axios.get('http://localhost:8000/api/service');
+    const result = await axios.get('http://103.57.222.114:10000/api/service');
     setService(result.data);
   };
 
@@ -86,7 +86,7 @@ export default function NewKhachWebsite () {
       ghichu: ghichu
     }
 
-    axios.post('http://localhost:8000/api/website', newKhachwebsite)
+    axios.post('http://103.57.222.114:10000/api/website', newKhachwebsite)
     .then(res => {
       alert('Thêm khách thành công!');
       history.push('/app/khach-website');

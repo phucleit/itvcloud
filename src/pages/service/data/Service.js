@@ -13,7 +13,7 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 
-const url_service = `http://localhost:8000/api/service/`;
+const url_service = `http://103.57.222.114:10000/api/service/`;
 
 export default function ServicePage () {
   var classes = useStyles();
@@ -25,7 +25,7 @@ export default function ServicePage () {
   }, []);
 
   const loadService = async () => {
-    const result = await axios.get('http://localhost:8000/api/service');
+    const result = await axios.get('http://103.57.222.114:10000/api/service');
     setData(result.data);
   };
 

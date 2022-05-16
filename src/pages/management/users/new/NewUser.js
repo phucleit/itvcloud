@@ -69,7 +69,7 @@ export default function NewUser () {
       phone: phone,
     }
 
-    axios.post('http://localhost:8000/api/user', newUser)
+    axios.post('http://103.57.222.114:10000/api/user', newUser)
     .then(res => {
       alert('Thêm tài khoản thành công!');
       history.push('/app/tai-khoan');

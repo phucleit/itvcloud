@@ -13,7 +13,7 @@ import useStyles from "./styles";
 // components
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 
-const url_user = `http://localhost:8000/api/user/`;
+const url_user = `http://103.57.222.114:10000/api/user/`;
 
 export default function UsersPage () {
   var classes = useStyles();
@@ -23,7 +23,7 @@ export default function UsersPage () {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get('http://localhost:8000/api/user');
+    const result = await axios.get('http://103.57.222.114:10000/api/user');
     setData(result.data);
   };
 

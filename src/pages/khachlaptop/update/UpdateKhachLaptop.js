@@ -12,7 +12,7 @@ import {
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 
-const url = 'http://localhost:8000/api/laptop/';
+const url = 'http://103.57.222.114:10000/api/laptop/';
 
 export default function UpdateKhachLaptop () {
   var classes = useStyles();

@@ -12,7 +12,7 @@ import {
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 
-const url = 'http://localhost:8000/api/service/';
+const url = 'http://103.57.222.114:10000/api/service/';
 
 export default function UpdateService () {
   var classes = useStyles();
