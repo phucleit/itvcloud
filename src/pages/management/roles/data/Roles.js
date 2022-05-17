@@ -21,7 +21,7 @@ export default function RolesPage () {
   }, []);
 
   const loadRoles = async () => {
-    const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/roles');
+    const result = await axios.get('http://103.57.222.114:10000/api/role');
     setData(result.data);
   };
 
