@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -36,6 +36,12 @@ export default function Header(props) {
 
   // local
   var [profileMenu, setProfileMenu] = useState(null);
+
+  var [userName, setUserName] = useState();
+  useEffect(() => {
+    var user = localStorage.getItem('user_info');
+    setUserName(JSON.parse(user))
+  }, []);
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -92,7 +98,7 @@ export default function Header(props) {
         >
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
-              Xin chào, Phúc
+              Xin chào, {userName}
             </Typography>
           </div>
           <div className={classes.profileMenuUser}>

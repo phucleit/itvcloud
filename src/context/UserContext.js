@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 var UserStateContext = React.createContext();
 var UserDispatchContext = React.createContext();
@@ -17,7 +18,7 @@ function userReducer(state, action) {
 
 function UserProvider({ children }) {
   var [state, dispatch] = React.useReducer(userReducer, {
-    isAuthenticated: !!localStorage.getItem("id_token"),
+    isAuthenticated: !!localStorage.getItem("token"),
   });
 
   return (
@@ -53,24 +54,35 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
   setError(false);
   setIsLoading(true);
 
-  if (!!login && !!password) {
-    setTimeout(() => {
-      localStorage.setItem('id_token', 1)
-      setError(null)
-      setIsLoading(false)
-      dispatch({ type: 'LOGIN_SUCCESS' })
+  const userLogin = {
+    username: login,
+    password: password
+  };
 
-      history.push('/app/dashboard')
-    }, 2000);
-  } else {
-    dispatch({ type: "LOGIN_FAILURE" });
-    setError(true);
-    setIsLoading(false);
-  }
+  axios.post('http://103.57.222.114:10000/api/user/login', userLogin)
+  .then(res => {  
+    if (res.status === 200) {
+      setTimeout(() => {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user_info', JSON.stringify(res.data.hoten));
+        setError(null)
+        setIsLoading(false)
+        dispatch({ type: 'LOGIN_SUCCESS' })
+
+        history.push('/app/dashboard')
+      }, 500);
+    }
+  }).catch((error) => {
+    if (error.response.status === 401) {
+      alert('Username hoặc password không đúng. Vui lòng nhập lại!');
+      history.push('/');
+    }
+  });
 }
 
 function signOut(dispatch, history) {
-  localStorage.removeItem("id_token");
+  localStorage.removeItem("token");
+  localStorage.removeItem("user_info");
   dispatch({ type: "SIGN_OUT_SUCCESS" });
   history.push("/login");
 }
