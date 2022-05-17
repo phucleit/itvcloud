@@ -15,8 +15,8 @@ export default function NewUser () {
   var classes = useStyles();
   let history  = useHistory();
 
-  // const [ roles, setRoles ] = useState([]);
-  // const [ roleID, setRoleID ] = useState('');
+  const [ roles, setRoles ] = useState([]);
+  const [ roleID, setRoleID ] = useState('');
 
   const [ hoten, setHoten ] = useState('');
   const [ username, setUsername ] = useState('');
@@ -25,19 +25,19 @@ export default function NewUser () {
   const [ phone, setPhone ] = useState('');
 
   useEffect(() => {
-    // loadRoles();
+    loadRoles();
   }, []);
 
-  // const loadRoles = async () => {
-  //   const result = await axios.get('https://624d0001d71863d7a8125b73.mockapi.io/roles');
-  //   setRoles(result.data);
-  // };
+  const loadRoles = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/role');
+    setRoles(result.data);
+  };
 
-  // const Role = roles.map(Role => Role)
+  const Role = roles.map(Role => Role)
 
-  // const handleRolesChange = (e) => {
-  //   setRoleID(e.target.value);
-  // }
+  const handleRolesChange = (e) => {
+    setRoleID(e.target.value);
+  }
 
   const handleAddUser = (e) => {
     e.preventDefault();
@@ -101,7 +101,7 @@ export default function NewUser () {
             <label className={classes.label}>Điện thoại</label>
             <input type="tel" name="phone" className={classes.inputName} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Nhập số điện thoại...' />
         </div>
-        {/* <div className={classes.newUserItem}>
+        <div className={classes.newUserItem}>
           <label className={classes.label}>Nhóm</label>
           <select
             onChange={e => handleRolesChange(e)}
@@ -113,7 +113,7 @@ export default function NewUser () {
                 Role.map((value, key) => <option key={value.id} value={value.id}>{value.title}</option>)
             }
           </select>
-        </div> */}
+        </div>
         <Button
           variant="contained"
           size="medium"
