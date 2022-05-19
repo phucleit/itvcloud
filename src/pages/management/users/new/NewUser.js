@@ -67,6 +67,7 @@ export default function NewUser () {
       password: password,
       email: email,
       phone: phone,
+      roles: roleID
     }
 
     axios.post('http://103.57.222.114:10000/api/user', newUser)

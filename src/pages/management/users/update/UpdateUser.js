@@ -27,8 +27,12 @@ export default function UpdateUser () {
   const [ email, setEmail ] = useState('');
   const [ phone, setPhone ] = useState('');
 
+  const [roles, setRoles] = useState([]);
+  const [roleID, setRoleID] = useState('');
+
   useEffect(() => {
     loadUser();
+    loadRoles();
   }, []);
 
   const loadUser = async () => {
@@ -38,7 +42,19 @@ export default function UpdateUser () {
     setPassword(result.data.password);
     setEmail(result.data.email);
     setPhone(result.data.phone);
+    setRoleID(result.data.roles.id);
   };
+
+  const loadRoles = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/role');
+    setRoles(result.data);
+  };
+
+  const Role = roles.map(Role => Role)
+
+  const handleRolesChange = (e) => {
+    setRoleID(e.target.value);
+  }
 
   const handleUpdateUser = (e) => {
     e.preventDefault();
@@ -68,6 +84,7 @@ export default function UpdateUser () {
       password: password,
       email: email,
       phone: phone,
+      roles: roleID
     }
 
     axios.put(url + currentId, newUser)
@@ -101,6 +118,20 @@ export default function UpdateUser () {
         <div className={classes.newUserItem}>
             <label className={classes.label}>Điện thoại</label>
             <input type="tel" name="phone" className={classes.inputName} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Nhập số điện thoại...' />
+        </div>
+        <div className={classes.newUserItem}>
+          <label className={classes.label}>Nhóm</label>
+          <select
+            onChange={e => handleRolesChange(e)}
+            className={classes.newUserType}
+            id="newUserType"
+            value={roleID}
+          >
+            <option>-----</option>
+            {
+                Role.map((value, key) => <option key={value.id} value={value.id}>{value.title}</option>)
+            }
+          </select>
         </div>
         <Button
           variant="contained"

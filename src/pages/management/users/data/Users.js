@@ -41,12 +41,12 @@ export default function UsersPage () {
     { field: 'hoten', headerName: 'Họ tên', width: 250 },
     { field: 'username', headerName: 'Username', width: 250 },
     { field: 'email', headerName: 'Email', width: 250 },
-    // {
-    //   field: 'role_id',
-    //   headerName: 'Nhóm quyền',
-    //   width: 250,
-    //   // valueGetter: (params) => `${params.row.role.title}`
-    // },
+    {
+      field: 'roles',
+      headerName: 'Nhóm quyền',
+      width: 250,
+      valueGetter: (params) => `${params.row.roles.title}`
+    },
     {
       field: 'hanhDong',
       headerName: 'Hành động',
