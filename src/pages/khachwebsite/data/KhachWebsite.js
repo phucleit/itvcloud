@@ -27,7 +27,6 @@ export default function KhachWebsitePage () {
   const loadKhachWebsite = async () => {
     const result = await axios.get('http://103.57.222.114:10000/api/website');
     setData(result.data);
-
   };
 
   const handleDelete = (id) => {
@@ -40,12 +39,12 @@ export default function KhachWebsitePage () {
     }
   }
 
-  // function getDateTime(params) {
-  //   var timeStamp = params.row.createdAt;
-  //   var date = new Date(timeStamp).toLocaleDateString("vi-VI");
-  //   var time = new Date(timeStamp).toLocaleTimeString("vi-VI");
-  //   return date + ' - ' + time;
-  // }
+  function getDateTime(params) {
+    var timeStamp = params.row.createdAt;
+    var date = new Date(timeStamp).toLocaleDateString("vi-VI");
+    var time = new Date(timeStamp).toLocaleTimeString("vi-VI");
+    return date + ' - ' + time;
+  }
 
   const columns = [
     { field: 'hoten', headerName: 'Họ tên', width: 200 },
@@ -59,7 +58,7 @@ export default function KhachWebsitePage () {
       valueGetter: (params) => `${params.row.service.tengoidv}` 
     },
     { field: 'goidungluong', headerName: 'Gói dung lượng', width: 150 },
-    // { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
+    { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
     {
       field: 'hanhDong',
       headerName: 'Hành động',
@@ -87,9 +86,7 @@ export default function KhachWebsitePage () {
         website.website.toLowerCase().indexOf(query) > -1 ||
         website.website.indexOf(query) > -1 ||
         website.nhanvienphutrach.toLowerCase().indexOf(query) > -1 ||
-        website.nhanvienphutrach.indexOf(query) > -1 ||
-        website.trangthai.toLowerCase().indexOf(query) > -1 ||
-        website.trangthai.indexOf(query) > -1
+        website.nhanvienphutrach.indexOf(query) > -1
     );
   }
 
