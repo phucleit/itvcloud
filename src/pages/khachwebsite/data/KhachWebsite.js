@@ -19,15 +19,59 @@ export default function KhachWebsitePage () {
   var classes = useStyles();
   const [data, setData] = useState([]);
   const [ query, setQuery ] = useState('');
+  const [dataStatus, setDataStatus] = useState([]);
+  const [filterStatus, setFilterStatus] = useState([]);
+  const [statusName, setStatusName] = useState('');
+  const [dataService, setDataService] = useState([]);
+  const [filterService, setFilterService] = useState([]);
+  const [serviceName, setServiceName] = useState('');
 
   useEffect(() => {
     loadKhachWebsite();
+    loadServices();
+    loadStatus();
   }, []);
 
   const loadKhachWebsite = async () => {
     const result = await axios.get('http://103.57.222.114:10000/api/website');
     setData(result.data);
   };
+
+  const loadServices = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/service');
+    setDataService(result.data);
+  };
+
+  const Service = dataService.map(Service => Service);
+
+  const handleChangeService = (value) => {
+    setServiceName(value);
+    const result = [];
+    data.forEach(item => {
+      if (item.service.tengoidv === value) {
+        result.push(item);
+      }
+    });
+    setFilterService(result);
+  }
+
+  const loadStatus = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/status');
+    setDataStatus(result.data);
+  };
+
+  const Status = dataStatus.map(Status => Status);
+
+  const handleChangeStatus = (value) => {
+    setStatusName(value);
+    const result = [];
+    data.forEach(item => {
+      if (item.status.name === value) {
+        result.push(item);
+      }
+    });
+    setFilterStatus(result);
+  }
 
   const handleDelete = (id) => {
     if (window.confirm('Bạn có muốn xóa không?')) {
@@ -57,17 +101,22 @@ export default function KhachWebsitePage () {
       width: 180, 
       valueGetter: (params) => `${params.row.service.tengoidv}` 
     },
-    { field: 'goidungluong', headerName: 'Gói dung lượng', width: 150 },
     { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
+    { 
+      field: 'status', 
+      headerName: 'Trạng thái', 
+      width: 180, 
+      valueGetter: (params) => `${params.row.status.name}` 
+    },
     {
       field: 'hanhDong',
       headerName: 'Hành động',
-      width: 150,
+      width: 100,
       renderCell: (params) => {
         return (
           <div className={classes.buttonAction}>
             <Link to={"/app/sua-khach-website/" + params.row.id}>
-              <button className={classes.userListEdit}>Edit</button>
+              <i class="fas fa-edit"></i>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
           </div>
@@ -103,31 +152,68 @@ export default function KhachWebsitePage () {
           </Button>
         </Link>
       )} />
-      <div className={classes.search}>
-        <input type="text" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
-        <button type="submit" className={classes.searchButton}>
-          <i className="fas fa-search"></i>
-        </button>
+      <div className={classes.boxSearch}>
+        <select
+          onChange={(e) => handleChangeService(e.target.value)}
+          className={classes.newServiceType}
+          id="newConstructionType"
+        >
+          <option>---Dịch vụ---</option>
+          {
+            Service.map((name, key) => <option key={name.id} value={name.tengoidv}>{name.tengoidv}</option>)
+          }
+        </select>
+        <select
+          onChange={(e) => handleChangeStatus(e.target.value)}
+          className={classes.newStatusType}
+          id="newConstructionType"
+        >
+          <option>---Trạng thái---</option>
+          {
+            Status.map((name, key) => <option key={name.id} value={name.name}>{name.name}</option>)
+          }
+        </select>
+        <input type="search" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
       </div>
-      <DataGrid
-        rows={search(data)}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        disableSelectionOnClick
-        className={classes.userData}
-        // sortingOrder={['desc', 'asc']}
-        // initialState={{
-        //   sorting: {
-        //     sortModel: [
-        //       {
-        //         field: 'id',
-        //         sort: 'desc',
-        //       },
-        //     ],
-        //   },
-        // }}
-      />
+      {
+        statusName.length !== 0 && statusName !== "---Trạng thái---"
+        ? <DataGrid
+            rows={search(filterStatus)}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            disableSelectionOnClick
+            className={classes.userData}
+          />
+        : <DataGrid
+            rows={search(data)}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            disableSelectionOnClick
+            className={classes.userData}
+          />
+      }
+
+      {
+        serviceName.length !== 0 && serviceName !== "---Dịch vụ---"
+        ? <DataGrid
+            rows={search(filterService)}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            disableSelectionOnClick
+            className={classes.userData}
+          />
+        : <DataGrid
+            rows={search(data)}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            disableSelectionOnClick
+            className={classes.userData}
+          />
+      }
     </>
   );
 }

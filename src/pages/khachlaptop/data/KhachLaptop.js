@@ -19,6 +19,8 @@ export default function KhachLaptopPage () {
   var classes = useStyles();
   const [data, setData] = useState([]);
   const [ query, setQuery ] = useState('');
+  const [filterStatus, setFilterStatus] = useState([]);
+  const [statusName, setStatusName] = useState('');
 
   useEffect(() => {
     loadKhachLaptop();
@@ -39,6 +41,17 @@ export default function KhachLaptopPage () {
     }
   }
 
+  const handleChangeStatus = (value) => {
+    setStatusName(value);
+    const result = [];
+    data.forEach(item => {
+      if (item.trangthai === value) {
+        result.push(item);
+      }
+    });
+    setFilterStatus(result);
+  }
+
   const columns = [
     { field: 'hoten', headerName: 'Họ tên', width: 200 },
     { field: 'phone', headerName: 'Số điện thoại', width: 200 },
@@ -54,7 +67,7 @@ export default function KhachLaptopPage () {
         return (
           <div className={classes.buttonAction}>
             <Link to={"/app/sua-khach-laptop/" + params.row.id}>
-              <button className={classes.userListEdit}>Edit</button>
+              <i class="fas fa-edit"></i>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
           </div>
@@ -94,20 +107,38 @@ export default function KhachLaptopPage () {
           </Button>
         </Link>
       )} />
-      <div className={classes.search}>
-        <input type="text" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
-        <button type="submit" className={classes.searchButton}>
-          <i className="fas fa-search"></i>
-        </button>
+      <div className={classes.boxSearch}>
+        <select
+          onChange={(e) => handleChangeStatus(e.target.value)}
+          className={classes.newStatusType}
+          id="newConstructionType"
+        >
+          <option>---Trạng thái---</option>
+          <option value="Đang triển khai">Đang triển khai</option>
+          <option value="Đã hoàn thành">Đã hoàn thành</option>
+          <option value="Đã thanh toán">Đã thanh toán</option>
+        </select>
+        <input type="search" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
       </div>
-      <DataGrid
-        rows={search(data)}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        disableSelectionOnClick
-        className={classes.userData}
-      />
+      {
+        statusName.length !== 0 && statusName !== "---Trạng thái---"
+        ? <DataGrid
+            rows={search(filterStatus)}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            disableSelectionOnClick
+            className={classes.userData}
+          />
+        : <DataGrid
+            rows={search(data)}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            disableSelectionOnClick
+            className={classes.userData}
+          />
+      }
     </>
   );
 }

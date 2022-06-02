@@ -25,11 +25,22 @@ export default makeStyles(theme => ({
     marginBottom: '30px',
   },
   searchTerm: {
-    width: '97%',
-    height: '40px',
+    height: '38px',
+    marginLeft: '20px',
+    marginRight: '20px',
   },
   searchButton: {
     width: '3%',
     height: '40px',
+  },
+  boxSearch: {
+    marginBottom: '20px',
+  },
+  newStatusType: {
+    height: '38px',
+    marginLeft: '20px',
+  },
+  newServiceType: {
+    height: '38px',
   }
 }));

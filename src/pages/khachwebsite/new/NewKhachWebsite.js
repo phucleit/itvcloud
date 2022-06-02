@@ -27,8 +27,12 @@ export default function NewKhachWebsite () {
   const [service, setService] = useState([]);
   const [serviceID, setServiceID] = useState('');
 
+  const [status, setStatus] = useState([]);
+  const [statusID, setStatusID] = useState('');
+
   useEffect(() => {
     loadServices();
+    loadStatus();
   }, []);
 
   const loadServices = async () => {
@@ -40,6 +44,17 @@ export default function NewKhachWebsite () {
 
   const handleServiceChange = (e) => {
     setServiceID(e.target.value);
+  }
+
+  const loadStatus = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/status');
+    setStatus(result.data);
+  };
+
+  const Status = status.map(Status => Status);
+
+  const handleStatusChange = (e) => {
+    setStatusID(e.target.value);
   }
 
   const handleAddKhachWebsite = (e) => {
@@ -83,6 +98,7 @@ export default function NewKhachWebsite () {
       khuvuc: khuvuc,
       goidungluong: goidl,
       service: serviceID,
+      status: statusID,
       ghichu: ghichu
     }
 
@@ -136,6 +152,19 @@ export default function NewKhachWebsite () {
               <option>-----</option>
               {
                 Service.map((name, key) => <option key={name.id} value={name.id}>{name.tengoidv}</option>)
+              }
+            </select>
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Trạng thái</label>
+            <select
+              onChange={e => handleStatusChange(e)}
+              className={classes.newUserType}
+              id="newServiceType"
+            >
+              <option>-----</option>
+              {
+                Status.map((name, key) => <option key={name.id} value={name.id}>{name.name}</option>)
               }
             </select>
         </div>

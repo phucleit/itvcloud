@@ -40,7 +40,6 @@ export default function ServicePage () {
   }
 
   const columns = [
-    // { field: 'id', headerName: 'ID', width: 70 },
     { field: 'tengoidv', headerName: 'Tên gói dịch vụ', width: 200 },
     {
       field: 'hanhDong',
@@ -50,7 +49,7 @@ export default function ServicePage () {
         return (
           <div className={classes.buttonAction}>
             <Link to={"/app/sua-dich-vu/" + params.row.id}>
-              <button className={classes.userListEdit}>Edit</button>
+              <i class="fas fa-edit"></i>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
           </div>

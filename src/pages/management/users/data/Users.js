@@ -55,7 +55,7 @@ export default function UsersPage () {
         return (
           <div className={classes.buttonAction}>
             <Link to={"/app/sua-tai-khoan/" + params.row.id}>
-              <button className={classes.userListEdit}>Edit</button>
+              <i class="fas fa-edit"></i>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
           </div>

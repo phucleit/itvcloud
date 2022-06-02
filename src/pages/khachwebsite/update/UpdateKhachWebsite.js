@@ -33,13 +33,18 @@ export default function UpdateKhachWebsite () {
   const [service, setService] = useState([]);
   const [serviceID, setServiceID] = useState();
 
+  const [status, setStatus] = useState([]);
+  const [statusID, setStatusID] = useState('');
+
   useEffect(() => {
     loadKhachWebsite();
     loadServices();
+    loadStatus();
   }, []);
 
   const loadKhachWebsite = async () => {
     const result = await axios.get(url + currentId);
+    console.log(result.data);
     setHoten(result.data.hoten);
     setCmnd(result.data.cmnd);
     setPhone(result.data.phone);
@@ -48,6 +53,7 @@ export default function UpdateKhachWebsite () {
     setKhuvuc(result.data.khuvuc);
     setGoidl(result.data.goidungluong);
     setServiceID(result.data.service.id);
+    setStatusID(result.data.status.id);
     setGhichu(result.data.ghichu);
   };
 
@@ -60,6 +66,17 @@ export default function UpdateKhachWebsite () {
 
   const handleServiceChange = (e) => {
     setServiceID(e.target.value);
+  }
+
+  const loadStatus = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/status');
+    setStatus(result.data);
+  };
+
+  const Status = status.map(Status => Status);
+
+  const handleStatusChange = (e) => {
+    setStatusID(e.target.value);
   }
 
   const handleUpdateKhachWebsite = (e) => {
@@ -103,6 +120,7 @@ export default function UpdateKhachWebsite () {
       khuvuc: khuvuc,
       goidungluong: goidl,
       service: serviceID,
+      status: statusID,
       ghichu: ghichu
     }
 
@@ -157,6 +175,20 @@ export default function UpdateKhachWebsite () {
               <option>-----</option>
               {
                 Service.map((name, key) => <option key={name.id} value={name.id}>{name.tengoidv}</option>)
+              }
+            </select>
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Trạng thái</label>
+            <select
+              onChange={e => handleStatusChange(e)}
+              className={classes.newUserType}
+              id="newServiceType"
+              value={statusID}
+            >
+              <option>-----</option>
+              {
+                Status.map((name, key) => <option key={name.id} value={name.id}>{name.name}</option>)
               }
             </select>
         </div>
