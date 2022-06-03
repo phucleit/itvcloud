@@ -22,6 +22,7 @@ export default function NewKhachWebsite () {
   const [ nhanvienphutrach, setNhanvienphutrach ] = useState('');
   const [ khuvuc, setKhuvuc ] = useState('');
   const [ goidl, setGoidl ] = useState('');
+  const [ chiphi, setChiPhi ] = useState('');
   const [ ghichu, setGhichu ] = useState('');
 
   const [service, setService] = useState([]);
@@ -89,6 +90,11 @@ export default function NewKhachWebsite () {
       return;
     }
 
+    if (chiphi === "") {
+      alert("Vui lòng nhập chi phí");
+      return;
+    }
+
     const newKhachwebsite = {
       hoten: hoten,
       cmnd: cmnd,
@@ -99,6 +105,7 @@ export default function NewKhachWebsite () {
       goidungluong: goidl,
       service: serviceID,
       status: statusID,
+      chiphi: chiphi,
       ghichu: ghichu
     }
 
@@ -167,6 +174,10 @@ export default function NewKhachWebsite () {
                 Status.map((name, key) => <option key={name.id} value={name.id}>{name.name}</option>)
               }
             </select>
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Chi phí (*)</label>
+            <input type="text" name="chiphi" className={classes.inputName} value={chiphi} onChange={(e) => setChiPhi(e.target.value)} placeholder='Nhập chi phí...' />
         </div>
         <div className={classes.newUserItem}>
             <label className={classes.label}>Ghi chú</label>

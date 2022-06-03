@@ -29,6 +29,7 @@ export default function UpdateKhachWebsite () {
   const [ khuvuc, setKhuvuc ] = useState('');
   const [ ghichu, setGhichu ] = useState('');
   const [ goidl, setGoidl ] = useState('');
+  const [ chiphi, setChiPhi ] = useState('');
 
   const [service, setService] = useState([]);
   const [serviceID, setServiceID] = useState();
@@ -55,6 +56,7 @@ export default function UpdateKhachWebsite () {
     setServiceID(result.data.service.id);
     setStatusID(result.data.status.id);
     setGhichu(result.data.ghichu);
+    setChiPhi(result.data.chiphi);
   };
 
   const loadServices = async () => {
@@ -111,6 +113,11 @@ export default function UpdateKhachWebsite () {
       return;
     }
 
+    if (chiphi === "") {
+      alert("Vui lòng nhập chi phí");
+      return;
+    }
+
     const updateKhachWebsite = {
       hoten: hoten,
       cmnd: cmnd,
@@ -121,7 +128,8 @@ export default function UpdateKhachWebsite () {
       goidungluong: goidl,
       service: serviceID,
       status: statusID,
-      ghichu: ghichu
+      ghichu: ghichu,
+      chiphi: chiphi,
     }
 
     axios.put(url + currentId, updateKhachWebsite)
@@ -191,6 +199,10 @@ export default function UpdateKhachWebsite () {
                 Status.map((name, key) => <option key={name.id} value={name.id}>{name.name}</option>)
               }
             </select>
+        </div>
+        <div className={classes.newUserItem}>
+            <label className={classes.label}>Chi phí (*)</label>
+            <input type="text" name="chiphi" className={classes.inputName} value={chiphi} onChange={(e) => setChiPhi(e.target.value)} placeholder='Nhập chi phí...' />
         </div>
         <div className={classes.newUserItem}>
             <label className={classes.label}>Ghi chú</label>
