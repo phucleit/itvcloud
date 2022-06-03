@@ -24,19 +24,22 @@
   vertical-align: baseline;
   border-radius: 0.125rem;
   margin-left: 10px;
+  color: #fff;
 }
 
 .list-group-item span.badge-1 {
-  color: #fff;
   background-color: #2196f3;
 }
 
 .list-group-item span.badge-2 {
-  color: #fff;
   background-color: #ff7043;
 }
 
 .list-group-item span.badge-3 {
-  color: #fff;
   background-color: #ff2525;
+}
+
+.list-group-item span.badge-4 {
+  background-color: #86c16a;
+  font-size: 15px;
 }
