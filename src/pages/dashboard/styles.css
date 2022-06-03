@@ -1,0 +1,42 @@
+.list-group .header-title {
+  text-align: center;
+  min-height: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 1.82;
+}
+
+.list-group .header-title h3 {
+  font-size: 20px;
+}
+
+.list-group .header-title i {
+  font-size: 2rem;
+}
+
+.list-group-item span {
+  padding: 0.3125rem 0.375rem;
+  font-size: 75%;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.125rem;
+  margin-left: 10px;
+}
+
+.list-group-item span.badge-1 {
+  color: #fff;
+  background-color: #2196f3;
+}
+
+.list-group-item span.badge-2 {
+  color: #fff;
+  background-color: #ff7043;
+}
+
+.list-group-item span.badge-3 {
+  color: #fff;
+  background-color: #ff2525;
+}
