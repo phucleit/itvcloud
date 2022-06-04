@@ -26,6 +26,8 @@ export default function KhachWebsitePage () {
   const [filterService, setFilterService] = useState([]);
   const [serviceName, setServiceName] = useState('');
 
+  const [ dataLength, setDataLength ] = useState('');
+
   useEffect(() => {
     loadKhachWebsite();
     loadServices();
@@ -35,6 +37,7 @@ export default function KhachWebsitePage () {
   const loadKhachWebsite = async () => {
     const result = await axios.get('http://103.57.222.114:10000/api/website');
     setData(result.data);
+    setDataLength(result.data.length);
   };
 
   const loadServices = async () => {
@@ -83,8 +86,15 @@ export default function KhachWebsitePage () {
     }
   }
 
-  function getDateTime(params) {
+  function getCreatedAt(params) {
     var timeStamp = params.row.createdAt;
+    var date = new Date(timeStamp).toLocaleDateString("vi-VI");
+    var time = new Date(timeStamp).toLocaleTimeString("vi-VI");
+    return date + ' - ' + time;
+  }
+
+  function getExpiredAt(params) {
+    var timeStamp = params.row.expiredAt;
     var date = new Date(timeStamp).toLocaleDateString("vi-VI");
     var time = new Date(timeStamp).toLocaleTimeString("vi-VI");
     return date + ' - ' + time;
@@ -94,14 +104,14 @@ export default function KhachWebsitePage () {
     { field: 'hoten', headerName: 'Họ tên', width: 200 },
     { field: 'phone', headerName: 'Số điện thoại', width: 150 },
     { field: 'website', headerName: 'Website', width: 250 },
-    { field: 'nhanvienphutrach', headerName: 'Nhân viên phụ trách', width: 200 },
     { 
       field: 'service', 
       headerName: 'Gói dịch vụ', 
       width: 180, 
       valueGetter: (params) => `${params.row.service.tengoidv}` 
     },
-    { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getDateTime, width: 200 },
+    { field: 'createdAt', headerName: 'Ngày đăng ký', valueGetter: getCreatedAt, width: 200 },
+    { field: 'expiredAt', headerName: 'Ngày hết hạn', valueGetter: getExpiredAt, width: 200 },
     { 
       field: 'status', 
       headerName: 'Trạng thái', 
@@ -153,6 +163,15 @@ export default function KhachWebsitePage () {
         </Link>
       )} />
       <div className={classes.boxSearch}>
+        <div className={classes.boxUse}>
+          Đang sử dụng: {dataLength ? dataLength : '0'}
+        </div>
+        <div className={classes.boxAbout}>
+          Sắp hết hạn: 01
+        </div>
+        <div className={classes.boxExpire}>
+          Hết hạn: 02
+        </div>
         <select
           onChange={(e) => handleChangeService(e.target.value)}
           className={classes.newServiceType}

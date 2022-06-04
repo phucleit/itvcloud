@@ -9,11 +9,11 @@ export default makeStyles(theme => ({
       padding: '15px',
   },
   newUserItem: {
-      width: '40%',
+    //   width: '40%',
       display: 'flex',
       flexDirection: 'column',
       marginTop: '10px',
-      marginRight: '20px',
+    //   marginRight: '20px',
   },
   label: {
       marginBottom: '10px',
@@ -33,5 +33,8 @@ export default makeStyles(theme => ({
   },
   newUserBtn: {
       marginTop: '20px',
+  },
+  reactDatepickerWrapper: {
+    width: '100%'
   }
 }));

@@ -42,5 +42,32 @@ export default makeStyles(theme => ({
   },
   newServiceType: {
     height: '38px',
-  }
+  },
+  boxUse: {
+    float: 'left',
+    background: '#2196f3',
+    color: '#fff',
+    marginRight: '20px',
+    padding: '8px 20px 8px 20px',
+    border: '1px solid',
+    borderRadius: '4px'
+  },
+  boxAbout: {
+    float: 'left',
+    background: '#ff7043',
+    color: '#fff',
+    marginRight: '20px',
+    padding: '8px 20px 8px 20px',
+    border: '1px solid',
+    borderRadius: '4px'
+  },
+  boxExpire: {
+    float: 'left',
+    background: '#f44336',
+    color: '#fff',
+    marginRight: '20px',
+    padding: '8px 20px 8px 20px',
+    border: '1px solid',
+    borderRadius: '4px'
+  },
 }));
