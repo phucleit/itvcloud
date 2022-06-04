@@ -49,7 +49,7 @@ export default function ServicePage () {
         return (
           <div className={classes.buttonAction}>
             <Link to={"/app/sua-dich-vu/" + params.row.id}>
-              <i class="fas fa-edit"></i>
+              <i className="fas fa-edit"></i>
             </Link>
             <DeleteOutline className={classes.userListDelete} onClick={() => handleDelete(params.row.id)} />
           </div>

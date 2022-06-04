@@ -25,17 +25,25 @@ export default function CardBody() {
     setServiceSSL(result.data[2].website.length);
     setServiceEmail(result.data[3].website.length);
     
-    const sumWebsite = result.data[0].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
-    setTotalPriceWebsite(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumWebsite));
+    if (result.data[0].website.length > 0) {
+      const sumWebsite = result.data[0].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
+      setTotalPriceWebsite(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumWebsite));
+    }
 
-    const sumHosting = result.data[1].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
-    setTotalPriceHosting(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumHosting));
+    if (result.data[1].website.length > 0) {
+      const sumHosting = result.data[1].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
+      setTotalPriceHosting(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumHosting));
+    }
 
-    const sumSSL = result.data[2].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
-    setTotalPriceSSL(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumSSL));   
+    if (result.data[2].website.length > 0) {
+      const sumSSL = result.data[2].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
+      setTotalPriceSSL(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumSSL));   
+    }
 
-    const sumEmail = result.data[3].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
-    setTotalPriceEmail(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumEmail));
+    if (result.data[3].website > 0) {
+      const sumEmail = result.data[3].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
+      setTotalPriceEmail(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumEmail));
+    }
   }; 
 
   return (
@@ -44,7 +52,7 @@ export default function CardBody() {
           <div className="card card-body">
             <ul className="list-group">
               <div className="header-title">
-                <i class="fas fa-globe"></i>
+                <i className="fas fa-globe"></i>
                 <h3>TÊN MIỀN</h3>
               </div>
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceWebsite}</span></a>
@@ -58,7 +66,7 @@ export default function CardBody() {
           <div className="card card-body">
             <ul className="list-group">
               <div className="header-title">
-                <i class="fas fa-server"></i>
+                <i className="fas fa-server"></i>
                 <h3>HOSTING</h3>
               </div>
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceHosting}</span></a>
@@ -72,7 +80,7 @@ export default function CardBody() {
           <div className="card card-body">
             <ul className="list-group">
               <div className="header-title">
-                <i class="fab fa-expeditedssl"></i>
+                <i className="fab fa-expeditedssl"></i>
                 <h3>SSL</h3>
               </div>
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceSSL}</span></a>
@@ -86,7 +94,7 @@ export default function CardBody() {
           <div className="card card-body">
             <ul className="list-group">
               <div className="header-title">
-                <i class="fas fa-envelope-open-text"></i>
+                <i className="fas fa-envelope-open-text"></i>
                 <h3>EMAIL DOANH NGHIỆP</h3>
               </div>
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceEmail}</span></a>
