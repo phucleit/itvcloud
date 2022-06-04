@@ -50,7 +50,7 @@ export default function CardBody() {
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceWebsite}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
-              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceWebsite}</span></a>
+              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceWebsite ? totalPriceWebsite : '0'}</span></a>
             </ul>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function CardBody() {
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceHosting}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
-              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceHosting}</span></a>
+              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceHosting ? totalPriceHosting : '0'}</span></a>
             </ul>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function CardBody() {
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceSSL}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
-              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceSSL}</span></a>
+              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceSSL ? totalPriceSSL : '0'}</span></a>
             </ul>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function CardBody() {
               <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceEmail}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
-              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceEmail}</span></a>
+              <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceEmail ? totalPriceEmail : '0'}</span></a>
             </ul>
           </div>
         </div>
