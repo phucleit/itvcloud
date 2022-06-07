@@ -48,8 +48,7 @@ export default makeStyles(theme => ({
     background: '#2196f3',
     color: '#fff',
     marginRight: '20px',
-    padding: '8px 20px 8px 20px',
-    border: '1px solid',
+    padding: '7px 20px 7px 20px',
     borderRadius: '4px'
   },
   boxAbout: {
@@ -57,8 +56,7 @@ export default makeStyles(theme => ({
     background: '#ff7043',
     color: '#fff',
     marginRight: '20px',
-    padding: '8px 20px 8px 20px',
-    border: '1px solid',
+    padding: '7px 20px 7px 20px',
     borderRadius: '4px'
   },
   boxExpire: {
@@ -66,8 +64,7 @@ export default makeStyles(theme => ({
     background: '#f44336',
     color: '#fff',
     marginRight: '20px',
-    padding: '8px 20px 8px 20px',
-    border: '1px solid',
+    padding: '7px 20px 7px 20px',
     borderRadius: '4px'
   },
 }));

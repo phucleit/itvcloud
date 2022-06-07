@@ -222,7 +222,7 @@ export default function NewKhachWebsite () {
             <div className={classes.newUserItem}>
               <label className={classes.label}>Ngày khởi tạo</label>
               <DatePicker 
-                minDate={new Date()} 
+                // minDate={new Date()} 
                 dateFormat="dd/MM/yyyy - HH:mm:ss" 
                 selected={createdAt} 
                 onChange={date => setCreatedAt(date)}
@@ -237,7 +237,7 @@ export default function NewKhachWebsite () {
             <div className={classes.newUserItem}>
               <label className={classes.label}>Ngày hết hạn</label>
               <DatePicker 
-                minDate={new Date()} 
+                // minDate={new Date()}
                 dateFormat="dd/MM/yyyy - HH:mm:ss" 
                 selected={expiredAt} 
                 onChange={date => setExpiredAt(date)}

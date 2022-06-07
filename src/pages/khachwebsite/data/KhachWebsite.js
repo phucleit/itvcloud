@@ -28,18 +28,32 @@ export default function KhachWebsitePage () {
 
   const [ dataLength, setDataLength ] = useState('');
 
+  const [ countWebsiteExpired, setCountWebsiteExpired ] = useState('');
+  const [ dataWebsiteExpired, setDataWebsiteExpired ] = useState([]);
+
   useEffect(() => {
     loadKhachWebsite();
     loadServices();
     loadStatus();
+    loadWebsiteExpired();
   }, []);
 
+  /* count website expired */
+  const loadWebsiteExpired = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/website/website/expired');
+    setCountWebsiteExpired(result.data.length);
+  }
+  /**/
+
+  /* website */
   const loadKhachWebsite = async () => {
     const result = await axios.get('http://103.57.222.114:10000/api/website');
     setData(result.data);
     setDataLength(result.data.length);
   };
+  /* end website */
 
+  /* services */
   const loadServices = async () => {
     const result = await axios.get('http://103.57.222.114:10000/api/service');
     setDataService(result.data);
@@ -57,7 +71,9 @@ export default function KhachWebsitePage () {
     });
     setFilterService(result);
   }
+  /* services */
 
+  /* end loadStatus */
   const loadStatus = async () => {
     const result = await axios.get('http://103.57.222.114:10000/api/status');
     setDataStatus(result.data);
@@ -75,6 +91,7 @@ export default function KhachWebsitePage () {
     });
     setFilterStatus(result);
   }
+  /* end loadStatus */
 
   const handleDelete = (id) => {
     if (window.confirm('Bạn có muốn xóa không?')) {
@@ -149,6 +166,20 @@ export default function KhachWebsitePage () {
     );
   }
 
+  const handleUseWebsite = async (e) => {
+    const result = await axios.get('http://103.57.222.114:10000/api/website');
+    setData(result.data);
+  }
+
+  const handleAboutWebsite = (e) => {
+    console.log('handleAboutWebsite');
+  }
+
+  const handleExpiredWebsite = async (e) => { 
+    const result = await axios.get('http://103.57.222.114:10000/api/website/website/expired');
+    setData(result.data);
+  }
+
   return (
     <>
       <PageTitle title="Danh sách khách website" button={(
@@ -163,15 +194,30 @@ export default function KhachWebsitePage () {
         </Link>
       )} />
       <div className={classes.boxSearch}>
-        <div className={classes.boxUse}>
+        <Button
+          variant="contained"
+          size="medium"
+          className={classes.boxUse}
+          onClick={handleUseWebsite}
+        >
           Đang sử dụng: {dataLength ? dataLength : '0'}
-        </div>
-        <div className={classes.boxAbout}>
+        </Button>
+        <Button
+          variant="contained"
+          size="medium"
+          className={classes.boxAbout}
+          onClick={handleAboutWebsite}
+        >
           Sắp hết hạn: 01
-        </div>
-        <div className={classes.boxExpire}>
-          Hết hạn: 02
-        </div>
+        </Button>
+        <Button
+          variant="contained"
+          size="medium"
+          className={classes.boxExpire}
+          onClick={handleExpiredWebsite}
+        >
+          Hết hạn: {countWebsiteExpired ? countWebsiteExpired : '0'}
+        </Button>
         <select
           onChange={(e) => handleChangeService(e.target.value)}
           className={classes.newServiceType}
