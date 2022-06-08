@@ -29,13 +29,15 @@ export default function KhachWebsitePage () {
   const [ dataLength, setDataLength ] = useState('');
 
   const [ countWebsiteExpired, setCountWebsiteExpired ] = useState('');
-  const [ dataWebsiteExpired, setDataWebsiteExpired ] = useState([]);
+  const [ countWebsiteToExpired, setCountWebsiteToExpired ] = useState('');
+  
 
   useEffect(() => {
     loadKhachWebsite();
     loadServices();
     loadStatus();
     loadWebsiteExpired();
+    loadWebsiteToExpired();
   }, []);
 
   /* count website expired */
@@ -43,7 +45,15 @@ export default function KhachWebsitePage () {
     const result = await axios.get('http://103.57.222.114:10000/api/website/website/expired');
     setCountWebsiteExpired(result.data.length);
   }
-  /**/
+  /* end count website expired */
+
+  /* count website to expired */
+  const loadWebsiteToExpired = async () => {
+    const result = await axios.get('http://103.57.222.114:10000/api/website/website/toexpired');
+    console.log(result.data);
+    setCountWebsiteToExpired(result);
+  }
+  /* end count website expired */
 
   /* website */
   const loadKhachWebsite = async () => {
@@ -71,9 +81,9 @@ export default function KhachWebsitePage () {
     });
     setFilterService(result);
   }
-  /* services */
+  /* end services */
 
-  /* end loadStatus */
+  /* loadStatus */
   const loadStatus = async () => {
     const result = await axios.get('http://103.57.222.114:10000/api/status');
     setDataStatus(result.data);
@@ -208,7 +218,7 @@ export default function KhachWebsitePage () {
           className={classes.boxAbout}
           onClick={handleAboutWebsite}
         >
-          Sắp hết hạn: 01
+          Sắp hết hạn: {countWebsiteToExpired ? countWebsiteToExpired : '0'}
         </Button>
         <Button
           variant="contained"
@@ -245,16 +255,16 @@ export default function KhachWebsitePage () {
         ? <DataGrid
             rows={search(filterStatus)}
             columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
+            pageSize={50}
+            rowsPerPageOptions={[50]}
             disableSelectionOnClick
             className={classes.userData}
           />
         : <DataGrid
             rows={search(data)}
             columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
+            pageSize={50}
+            rowsPerPageOptions={[50]}
             disableSelectionOnClick
             className={classes.userData}
           />

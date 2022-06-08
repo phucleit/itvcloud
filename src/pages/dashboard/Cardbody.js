@@ -40,7 +40,7 @@ export default function CardBody() {
       setTotalPriceSSL(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumSSL));   
     }
 
-    if (result.data[3].website > 0) {
+    if (result.data[3].website.length > 0) {
       const sumEmail = result.data[3].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
       setTotalPriceEmail(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumEmail));
     }
@@ -55,7 +55,7 @@ export default function CardBody() {
                 <i className="fas fa-globe"></i>
                 <h3>TÊN MIỀN</h3>
               </div>
-              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceWebsite}</span></a>
+              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceWebsite ? serviceWebsite : '0'}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
               <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceWebsite ? totalPriceWebsite : '0'}</span></a>
@@ -69,7 +69,7 @@ export default function CardBody() {
                 <i className="fas fa-server"></i>
                 <h3>HOSTING</h3>
               </div>
-              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceHosting}</span></a>
+              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceHosting ? serviceHosting : '0'}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
               <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceHosting ? totalPriceHosting : '0'}</span></a>
@@ -83,7 +83,7 @@ export default function CardBody() {
                 <i className="fab fa-expeditedssl"></i>
                 <h3>SSL</h3>
               </div>
-              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceSSL}</span></a>
+              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceSSL ? serviceSSL : '0'}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
               <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceSSL ? totalPriceSSL : '0'}</span></a>
@@ -97,7 +97,7 @@ export default function CardBody() {
                 <i className="fas fa-envelope-open-text"></i>
                 <h3>EMAIL DOANH NGHIỆP</h3>
               </div>
-              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceEmail}</span></a>
+              <a className="list-group-item">Dịch vụ đang sử dụng <span className="badge-1">{serviceEmail ? serviceEmail : '0'}</span></a>
               <a className="list-group-item">Dịch vụ sắp hết hạn <span className="badge-2">00</span></a>
               <a className="list-group-item">Dịch vụ hết hạn <span className="badge-3">00</span></a>
               <a className="list-group-item">Tổng chi phí dịch vụ <span className="badge-4">{totalPriceEmail ? totalPriceEmail : '0'}</span></a>

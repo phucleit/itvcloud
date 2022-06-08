@@ -267,7 +267,7 @@ export default function UpdateKhachWebsite () {
         <div className="row">
           <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
-              <label className={classes.label}>Ngày khởi tạo</label>
+              <label className={classes.label}>Ngày khởi tạo (*)</label>
               <DatePicker 
                 // minDate={new Date()} 
                 onChange={handleCreatedAt} 
@@ -281,7 +281,7 @@ export default function UpdateKhachWebsite () {
           </div>
           <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
-              <label className={classes.label}>Ngày hết hạn</label>
+              <label className={classes.label}>Ngày hết hạn (*)</label>
               <DatePicker 
                 // minDate={new Date()} 
                 onChange={handleExpiredAt}
