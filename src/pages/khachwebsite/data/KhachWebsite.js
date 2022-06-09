@@ -74,13 +74,13 @@ export default function KhachWebsitePage () {
   const handleChangeService = (value) => {
     setServiceName(value);
     const result = [];
-    data.forEach(item => {
-      if (item.service.length > 0) {
+    if (data) {
+      data.forEach(item => {
         if (item.service.tengoidv === value) {
           result.push(item);
         }
-      }
-    });
+      });
+    }
     setFilterService(result);
   }
   /* end services */
@@ -185,7 +185,7 @@ export default function KhachWebsitePage () {
     setData(result.data);
   }
 
-  const handleAboutWebsite = (e) => {
+  const handleAboutWebsite = async (e) => {
     const result = await axios.get(`${URL}/api/website/website/toexpired`);
     setData(result.data);
   }
@@ -238,12 +238,12 @@ export default function KhachWebsitePage () {
           className={classes.newServiceType}
           id="newConstructionType"
         >
-          <option>---Dịch vụ---</option>
+          <option>--- Gói dịch vụ ---</option>
           {
             Service.map((name, key) => <option key={name.id} value={name.tengoidv}>{name.tengoidv}</option>)
           }
         </select>
-        <select
+        {/* <select
           onChange={(e) => handleChangeStatus(e.target.value)}
           className={classes.newStatusType}
           id="newConstructionType"
@@ -252,10 +252,10 @@ export default function KhachWebsitePage () {
           {
             Status.map((name, key) => <option key={name.id} value={name.name}>{name.name}</option>)
           }
-        </select>
+        </select> */}
         <input type="search" className={classes.searchTerm} placeholder="Nhập từ khóa tìm kiếm" onChange={e => setQuery(e.target.value)} />
       </div>
-      {
+      {/* {
         statusName.length !== 0 && statusName !== "---Trạng thái---"
         ? <DataGrid
             rows={search(filterStatus)}
@@ -273,27 +273,27 @@ export default function KhachWebsitePage () {
             disableSelectionOnClick
             className={classes.userData}
           />
-      }
+      } */}
 
-      {/* {
+      {
         serviceName.length !== 0 && serviceName !== "---Dịch vụ---"
         ? <DataGrid
             rows={search(filterService)}
             columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
+            pageSize={50}
+            rowsPerPageOptions={[50]}
             disableSelectionOnClick
             className={classes.userData}
           />
         : <DataGrid
             rows={search(data)}
             columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
+            pageSize={50}
+            rowsPerPageOptions={[50]}
             disableSelectionOnClick
             className={classes.userData}
           />
-      } */}
+      }
     </>
   );
 }

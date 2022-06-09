@@ -52,6 +52,7 @@ export default function CardBody() {
 
   const loadService = async () => {
     const result = await axios.get(`${URL}/api/service`);
+    console.log(result.data[1].website);
 
     if (result.data.length) {
       if (result.data[0].website) {
@@ -59,11 +60,11 @@ export default function CardBody() {
       }
 
       if (result.data[1].website) {
-        setServiceHosting(result.data[1].website.length);
+        setServiceSSL(result.data[1].website.length);
       }
 
       if (result.data[2].website) {
-        setServiceSSL(result.data[2].website.length);
+        setServiceHosting(result.data[2].website.length);
       }
 
       if (result.data[3].website) {
@@ -76,13 +77,13 @@ export default function CardBody() {
       }
   
       if (result.data[1].website.length > 0) {
-        const sumHosting = result.data[1].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
-        setTotalPriceHosting(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumHosting));
+        const sumSSL = result.data[1].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
+        setTotalPriceSSL(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumSSL));
       }
   
       if (result.data[2].website.length > 0) {
-        const sumSSL = result.data[2].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
-        setTotalPriceSSL(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumSSL));   
+        const sumHosting = result.data[2].website.map(datum => datum.chiphi).reduce((a, b) => a + b);
+        setTotalPriceHosting(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(sumHosting));   
       }
   
       if (result.data[3].website.length > 0) {
