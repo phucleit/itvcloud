@@ -11,8 +11,9 @@ import {
 // components
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
+import { URL } from '../../../../constants';
 
-const url = 'http://103.57.222.114:10000/api/user/';
+const url_user = `${URL}/api/user/`;
 
 export default function UpdateUser () {
   var classes = useStyles();
@@ -36,7 +37,7 @@ export default function UpdateUser () {
   }, []);
 
   const loadUser = async () => {
-    const result = await axios.get(url + currentId);
+    const result = await axios.get(url_user + currentId);
     setHoten(result.data.hoten);
     setUsername(result.data.username);
     setPassword(result.data.password);
@@ -46,7 +47,7 @@ export default function UpdateUser () {
   };
 
   const loadRoles = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/role');
+    const result = await axios.get(`${URL}/api/role`);
     setRoles(result.data);
   };
 
@@ -87,7 +88,7 @@ export default function UpdateUser () {
       roles: roleID
     }
 
-    axios.put(url + currentId, newUser)
+    axios.put(url_user + currentId, newUser)
     .then(res => {
       alert('Cập nhật tài khoản thành công!');
       history.push('/app/tai-khoan');

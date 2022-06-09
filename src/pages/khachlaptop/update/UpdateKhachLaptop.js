@@ -11,8 +11,9 @@ import {
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
+import { URL } from '../../../constants';
 
-const url = 'http://103.57.222.114:10000/api/laptop/';
+const url_laptop = `${URL}/api/laptop/`;
 
 export default function UpdateKhachLaptop () {
   var classes = useStyles();
@@ -37,7 +38,7 @@ export default function UpdateKhachLaptop () {
   }, []);
 
   const loadKhachLaptop = async () => {
-    const result = await axios.get(url + currentId);
+    const result = await axios.get(url_laptop + currentId);
     setHoten(result.data.hoten);
     setPhone(result.data.phone);
     setDiachi(result.data.diachi);
@@ -115,7 +116,7 @@ export default function UpdateKhachLaptop () {
       phuongthucthanhtoan: phuongthuctt,
     }
 
-    axios.put(url + currentId, updateKhachlaptop)
+    axios.put(url_laptop + currentId, updateKhachlaptop)
     .then(res => {
       alert('Cập nhật khách thành công!');
       history.push('/app/khach-laptop');

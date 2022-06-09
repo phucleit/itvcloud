@@ -13,8 +13,9 @@ import DatePicker from 'react-datepicker';
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 import '../new/date.css';
+import { URL } from '../../../constants';
 
-const url = 'http://103.57.222.114:10000/api/website/';
+const url_website = `${URL}/api/website/`;
 
 export default function UpdateKhachWebsite () {
   var classes = useStyles();
@@ -48,7 +49,7 @@ export default function UpdateKhachWebsite () {
   }, []);
 
   const loadKhachWebsite = async () => {
-    const result = await axios.get(url + currentId);
+    const result = await axios.get(url_website + currentId);
     console.log(result.data);
     setHoten(result.data.hoten);
     setCmnd(result.data.cmnd);
@@ -66,7 +67,7 @@ export default function UpdateKhachWebsite () {
   };
 
   const loadServices = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/service');
+    const result = await axios.get(`${URL}/api/service`);
     setService(result.data);
   };
 
@@ -77,7 +78,7 @@ export default function UpdateKhachWebsite () {
   }
 
   const loadStatus = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/status');
+    const result = await axios.get(`${URL}/api/status`);
     setStatus(result.data);
   };
 
@@ -162,7 +163,7 @@ export default function UpdateKhachWebsite () {
       expiredAt: expired
     }
 
-    axios.put(url + currentId, updateKhachWebsite)
+    axios.put(url_website + currentId, updateKhachWebsite)
     .then(res => {
       alert('Cập nhật khách thành công!');
       history.push('/app/khach-website');

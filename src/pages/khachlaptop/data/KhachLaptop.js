@@ -12,8 +12,9 @@ import useStyles from "./styles";
 
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
+import { URL } from '../../../constants';
 
-const url_khach_laptop = `http://103.57.222.114:10000/api/laptop/`;
+const url_khach_laptop = `${URL}/api/laptop/`;
 
 export default function KhachLaptopPage () {
   var classes = useStyles();
@@ -27,7 +28,7 @@ export default function KhachLaptopPage () {
   }, []);
 
   const loadKhachLaptop = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/laptop');
+    const result = await axios.get(`${URL}/api/laptop`);
     setData(result.data);
   };
 

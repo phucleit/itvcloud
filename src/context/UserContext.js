@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { URL } from '../constants';
 
 var UserStateContext = React.createContext();
 var UserDispatchContext = React.createContext();
@@ -59,7 +60,7 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
     password: password
   };
 
-  axios.post('http://103.57.222.114:10000/api/user/login', userLogin)
+  axios.post(`${URL}/api/user/login`, userLogin)
   .then(res => {  
     if (res.status === 200) {
       setTimeout(() => {

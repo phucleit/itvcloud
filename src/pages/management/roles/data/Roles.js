@@ -11,6 +11,7 @@ import {
 // components
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
+import { URL } from '../../../../constants';
 
 export default function RolesPage () {
   var classes = useStyles();
@@ -21,7 +22,7 @@ export default function RolesPage () {
   }, []);
 
   const loadRoles = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/role');
+    const result = await axios.get(`${URL}/api/role`);
     setData(result.data);
   };
 

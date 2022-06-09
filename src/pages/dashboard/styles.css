@@ -43,3 +43,13 @@
   background-color: #86c16a;
   font-size: 15px;
 }
+
+.btn-dang-ky {
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-dang-ky:hover {
+  text-decoration: none;
+}

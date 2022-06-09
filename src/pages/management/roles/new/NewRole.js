@@ -10,6 +10,7 @@ import {
 // components
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
+import { URL } from '../../../../constants';
 
 export default function NewRole () {
   var classes = useStyles();
@@ -25,7 +26,7 @@ export default function NewRole () {
   }, []);
 
   const loadPermission = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/permission');
+    const result = await axios.get(`${URL}/api/permission`);
     setPermission(result.data);
   };
 
@@ -66,7 +67,7 @@ export default function NewRole () {
         permissions: permissions
       };
 
-      axios.post('http://103.57.222.114:10000/api/role', newRole)
+      axios.post(`${URL}/api/role`, newRole)
       .then(res => {
         alert('Thêm người dùng thành công!');
         history.push('/app/roles');

@@ -10,6 +10,7 @@ import {
 // components
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
+import { URL } from '../../../../constants';
 
 export default function NewUser () {
   var classes = useStyles();
@@ -29,7 +30,7 @@ export default function NewUser () {
   }, []);
 
   const loadRoles = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/role');
+    const result = await axios.get(`${URL}/api/role`);
     setRoles(result.data);
   };
 
@@ -70,7 +71,7 @@ export default function NewUser () {
       roles: roleID
     }
 
-    axios.post('http://103.57.222.114:10000/api/user', newUser)
+    axios.post(`${URL}/api/user`, newUser)
     .then(res => {
       alert('Thêm tài khoản thành công!');
       history.push('/app/tai-khoan');

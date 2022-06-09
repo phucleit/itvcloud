@@ -13,6 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 import './date.css';
+import { URL } from '../../../constants';
 
 export default function NewKhachWebsite () {
   var classes = useStyles();
@@ -43,7 +44,7 @@ export default function NewKhachWebsite () {
   }, []);
   
   const loadServices = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/service');
+    const result = await axios.get(`${URL}/api/service`);
     setService(result.data);
   };
 
@@ -54,7 +55,7 @@ export default function NewKhachWebsite () {
   }
 
   const loadStatus = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/status');
+    const result = await axios.get(`${URL}/api/status`);
     setStatus(result.data);
   };
 
@@ -117,7 +118,7 @@ export default function NewKhachWebsite () {
       expiredAt: expiredAt
     }
 
-    axios.post('http://103.57.222.114:10000/api/website', newKhachwebsite)
+    axios.post(`${URL}/api/website`, newKhachwebsite)
     .then(res => {
       alert('Thêm khách thành công!');
       history.push('/app/khach-website');

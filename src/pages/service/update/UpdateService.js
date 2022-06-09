@@ -11,8 +11,9 @@ import {
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
+import { URL } from '../../../constants';
 
-const url = 'http://103.57.222.114:10000/api/service/';
+const url_service = `${URL}/api/service/`;
 
 export default function UpdateService () {
   var classes = useStyles();
@@ -29,7 +30,7 @@ export default function UpdateService () {
   }, []);
 
   const loadService = async () => {
-    const result = await axios.get(url + currentId);
+    const result = await axios.get(url_service + currentId);
     setTengoidv(result.data.tengoidv);
     setMotagoidv(result.data.motagoidv);
   };
@@ -42,7 +43,7 @@ export default function UpdateService () {
       motagoidv: motagoidv,
     }
 
-    axios.put(url + currentId, updateService)
+    axios.put(url_service + currentId, updateService)
     .then(res => {
       alert('Cập nhật dịch vụ thành công!');
       history.push('/app/dich-vu');

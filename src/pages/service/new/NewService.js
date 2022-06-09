@@ -10,6 +10,7 @@ import {
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
+import { URL } from '../../../constants';
 
 export default function NewService () {
   var classes = useStyles();
@@ -30,7 +31,7 @@ export default function NewService () {
       motagoidv: motagoidv,
     }
 
-    axios.post('http://103.57.222.114:10000/api/service', newService)
+    axios.post(`${URL}/api/service`, newService)
     .then(res => {
       alert('Thêm dịch vụ thành công!');
       history.push('/app/dich-vu');

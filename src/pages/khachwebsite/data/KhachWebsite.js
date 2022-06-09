@@ -12,8 +12,9 @@ import useStyles from "./styles";
 
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
+import { URL } from '../../../constants';
 
-const url_khach_website = `http://103.57.222.114:10000/api/website/`;
+const url_khach_website = `${URL}/api/website/`;
 
 export default function KhachWebsitePage () {
   var classes = useStyles();
@@ -42,22 +43,21 @@ export default function KhachWebsitePage () {
 
   /* count website expired */
   const loadWebsiteExpired = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/website/website/expired');
+    const result = await axios.get(`${URL}/api/website/website/expired`);
     setCountWebsiteExpired(result.data.length);
   }
   /* end count website expired */
 
   /* count website to expired */
   const loadWebsiteToExpired = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/website/website/toexpired');
-    console.log(result.data);
-    setCountWebsiteToExpired(result);
+    const result = await axios.get(`${URL}/api/website/website/toexpired`);
+    setCountWebsiteToExpired(result.data.length);
   }
   /* end count website expired */
 
   /* website */
   const loadKhachWebsite = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/website');
+    const result = await axios.get(`${URL}/api/website`);
     setData(result.data);
     setDataLength(result.data.length);
   };
@@ -65,7 +65,7 @@ export default function KhachWebsitePage () {
 
   /* services */
   const loadServices = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/service');
+    const result = await axios.get(`${URL}/api/service`);
     setDataService(result.data);
   };
 
@@ -75,8 +75,10 @@ export default function KhachWebsitePage () {
     setServiceName(value);
     const result = [];
     data.forEach(item => {
-      if (item.service.tengoidv === value) {
-        result.push(item);
+      if (item.service.length > 0) {
+        if (item.service.tengoidv === value) {
+          result.push(item);
+        }
       }
     });
     setFilterService(result);
@@ -85,7 +87,7 @@ export default function KhachWebsitePage () {
 
   /* loadStatus */
   const loadStatus = async () => {
-    const result = await axios.get('http://103.57.222.114:10000/api/status');
+    const result = await axios.get(`${URL}/api/status`);
     setDataStatus(result.data);
   };
 
@@ -95,8 +97,10 @@ export default function KhachWebsitePage () {
     setStatusName(value);
     const result = [];
     data.forEach(item => {
-      if (item.status.name === value) {
-        result.push(item);
+      if (item.status.name.length > 0) {
+        if (item.status.name === value) {
+          result.push(item);
+        }
       }
     });
     setFilterStatus(result);
@@ -177,7 +181,7 @@ export default function KhachWebsitePage () {
   }
 
   const handleUseWebsite = async (e) => {
-    const result = await axios.get('http://103.57.222.114:10000/api/website');
+    const result = await axios.get(`${URL}/api/website`);
     setData(result.data);
   }
 
@@ -186,7 +190,7 @@ export default function KhachWebsitePage () {
   }
 
   const handleExpiredWebsite = async (e) => { 
-    const result = await axios.get('http://103.57.222.114:10000/api/website/website/expired');
+    const result = await axios.get(`${URL}/api/website/website/expired`);
     setData(result.data);
   }
 
