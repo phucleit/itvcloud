@@ -39,5 +39,8 @@ export default makeStyles(theme => ({
   },
   itemPermisstion: {
     marginRight: '85px',
+  },
+  labelPermission: {
+    marginLeft: '10px',
   }
 }));

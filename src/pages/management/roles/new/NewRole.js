@@ -98,7 +98,7 @@ export default function NewRole () {
                         role_1[1].map(
                           (value_1) =>
                             <div className={classes.checkPermission}>
-                              <input type="checkbox" key={value_1.id} value={value_1.id} onClick={e => handleChangeRoleOne(e)} /><label>{value_1.title}</label>
+                              <input type="checkbox" key={value_1.id} value={value_1.id} onClick={e => handleChangeRoleOne(e)} /><label className={classes.labelPermission}>{value_1.title}</label>
                             </div>
                         )
                       )
@@ -111,7 +111,7 @@ export default function NewRole () {
                         role_2[1].map(
                           (value_2) =>
                             <div className={classes.checkPermission}>
-                              <input type="checkbox" key={value_2.id} value={value_2.id} onClick={e => handleChangeRoleOne(e)} /><label>{value_2.title}</label>
+                              <input type="checkbox" key={value_2.id} value={value_2.id} onClick={e => handleChangeRoleOne(e)} /><label className={classes.labelPermission}>{value_2.title}</label>
                             </div>
                         )
                       )
@@ -124,7 +124,7 @@ export default function NewRole () {
                         role_3[1].map(
                           (value_3) =>
                             <div className={classes.checkPermission}>
-                              <input type="checkbox" key={value_3.id} value={value_3.id} onClick={e => handleChangeRoleOne(e)} /><label>{value_3.title}</label>
+                              <input type="checkbox" key={value_3.id} value={value_3.id} onClick={e => handleChangeRoleOne(e)} /><label className={classes.labelPermission}>{value_3.title}</label>
                             </div>
                         )
                       )
@@ -137,7 +137,7 @@ export default function NewRole () {
                         role_4[1].map(
                           (value_4) =>
                             <div className={classes.checkPermission}>
-                              <input type="checkbox" key={value_4.id} value={value_4.id} onClick={e => handleChangeRoleOne(e)} /><label>{value_4.title}</label>
+                              <input type="checkbox" key={value_4.id} value={value_4.id} onClick={e => handleChangeRoleOne(e)} /><label className={classes.labelPermission}>{value_4.title}</label>
                             </div>
                         )
                       )

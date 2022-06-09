@@ -186,7 +186,8 @@ export default function KhachWebsitePage () {
   }
 
   const handleAboutWebsite = (e) => {
-    console.log('handleAboutWebsite');
+    const result = await axios.get(`${URL}/api/website/website/toexpired`);
+    setData(result.data);
   }
 
   const handleExpiredWebsite = async (e) => { 
