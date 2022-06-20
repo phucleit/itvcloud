@@ -276,7 +276,7 @@ export default function KhachWebsitePage () {
       } */}
 
       {
-        serviceName.length !== 0 && serviceName !== "---Dịch vụ---"
+        serviceName.length !== 0 && serviceName !== "--- Gói dịch vụ ---"
         ? <DataGrid
             rows={search(filterService)}
             columns={columns}

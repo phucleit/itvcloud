@@ -132,11 +132,6 @@ export default function UpdateKhachWebsite () {
       return;
     }
 
-    if (nhanvienphutrach === "") {
-      alert("Vui lòng nhập nhập nhân viên phụ trách");
-      return;
-    }
-
     if (khuvuc === "") {
       alert("Vui lòng nhập khu vực");
       return;
@@ -206,7 +201,7 @@ export default function UpdateKhachWebsite () {
         <div className="row">
           <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
-              <label className={classes.label}>Nhân viên phụ trách (*)</label>
+              <label className={classes.label}>Nhân viên phụ trách</label>
               <input type="text" name="nhanvienphutrach" className={classes.inputName} value={nhanvienphutrach} onChange={(e) => setNhanvienphutrach(e.target.value)} placeholder='Nhập nhân viên phụ trách...' />
             </div>
           </div>
