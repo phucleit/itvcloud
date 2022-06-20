@@ -50,7 +50,6 @@ export default function UpdateKhachWebsite () {
 
   const loadKhachWebsite = async () => {
     const result = await axios.get(url_website + currentId);
-    console.log(result.data);
     setHoten(result.data.hoten);
     setCmnd(result.data.cmnd);
     setPhone(result.data.phone);

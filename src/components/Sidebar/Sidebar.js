@@ -71,7 +71,16 @@ const structure = [
       { label: "Thêm mới", link: "/app/them-dich-vu" },
     ],
   },
-  { id: 5, label: "Tạo báo cáo", link: "", icon: <ListAltIcon /> },
+  { 
+    id: 5, 
+    label: "Tạo báo cáo", 
+    link: "/app/bao-cao", 
+    icon: <ListAltIcon />,
+    children: [
+      { label: "Danh sách", link: "/app/bao-cao" },
+      { label: "Thêm mới", link: "/app/them-bao-cao" },
+    ],
+  },
   { id: 6, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
 ];
 

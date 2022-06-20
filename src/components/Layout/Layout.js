@@ -30,6 +30,9 @@ import UpdateKhachWebsite from '../../pages/khachwebsite/update';
 import ServicePage from '../../pages/service/data';
 import NewService from '../../pages/service/new';
 import UpdateService from '../../pages/service/update';
+import ReportPage from '../../pages/report/data';
+import NewReport from '../../pages/report/new';
+import UpdateReport from '../../pages/report/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -67,6 +70,9 @@ function Layout(props) {
               <Route path="/app/dich-vu" component={ServicePage} />
               <Route path="/app/them-dich-vu" component={NewService} />
               <Route path="/app/sua-dich-vu/:id" component={UpdateService} />
+              <Route path="/app/bao-cao" component={ReportPage} />
+              <Route path="/app/them-bao-cao" component={NewReport} />
+              <Route path="/app/sua-bao-cao/:id" component={UpdateReport} />
             </Switch>
             <Box
               mt={5}
