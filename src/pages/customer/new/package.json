@@ -1,0 +1,6 @@
+{
+  "name": "NewCustomer",
+  "version": "0.0.0",
+  "main": "NewCustomer.js",
+  "private": true
+}

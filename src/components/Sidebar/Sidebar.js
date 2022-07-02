@@ -7,7 +7,8 @@ import {
   Laptop as LaptopIcon,
   Settings as SettingsIcon,
   Backup as BackupIcon,
-  ListAlt as ListAltIcon
+  ListAlt as ListAltIcon,
+  Group as GroupIcon 
 } from "@material-ui/icons";
 import WebIcon from '@material-ui/icons/Web';
 import { useTheme } from "@material-ui/styles";
@@ -71,8 +72,18 @@ const structure = [
       { label: "Thêm mới", link: "/app/them-dich-vu" },
     ],
   },
+  {
+    id: 5,
+    label: "Khách hàng",
+    link: "/app/khach-hang",
+    icon: <GroupIcon />,
+    children: [
+      { label: "Danh sách", link: "/app/khach-hang" },
+      { label: "Thêm mới", link: "/app/them-khach-hang" },
+    ],
+  },
   { 
-    id: 5, 
+    id: 6, 
     label: "Tạo báo cáo", 
     link: "/app/bao-cao", 
     icon: <ListAltIcon />,
@@ -81,7 +92,7 @@ const structure = [
       { label: "Thêm mới", link: "/app/them-bao-cao" },
     ],
   },
-  { id: 6, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
+  { id: 7, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
 ];
 
 function Sidebar({ location }) {

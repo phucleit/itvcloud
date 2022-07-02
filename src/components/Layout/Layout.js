@@ -33,6 +33,9 @@ import UpdateService from '../../pages/service/update';
 import ReportPage from '../../pages/report/data';
 import NewReport from '../../pages/report/new';
 import UpdateReport from '../../pages/report/update';
+import CustomerPage from '../../pages/customer/data';
+import NewCustomer from '../../pages/customer/new';
+import UpdateCustomer from '../../pages/customer/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -73,6 +76,9 @@ function Layout(props) {
               <Route path="/app/bao-cao" component={ReportPage} />
               <Route path="/app/them-bao-cao" component={NewReport} />
               <Route path="/app/sua-bao-cao/:id" component={UpdateReport} />
+              <Route path="/app/khach-hang" component={CustomerPage} />
+              <Route path="/app/them-khach-hang" component={NewCustomer} />
+              <Route path="/app/sua-khach-hang/:id" component={UpdateCustomer} />
             </Switch>
             <Box
               mt={5}
