@@ -68,13 +68,13 @@ export default function UpdateCustomer () {
   }
 
   const changeHinhMatTruoc = (event) => {
-		setHinhMatTruoc(event.target.files[0]);
 		setIsMatTruocPicked(true);
+		setHinhMatTruoc(event.target.files[0]);
 	};
 
   const changeHinhMatSau = (event) => {
-		setHinhMatSau(event.target.files[0]);
 		setIsMatSauPicked(true);
+		setHinhMatSau(event.target.files[0]);
 	};
 
   const handleUpdateCustomer = (e) => {
@@ -198,14 +198,14 @@ export default function UpdateCustomer () {
             <div className={classes.newUserItem}>
               <label className={classes.label}>CMND mặt trước</label>
               <input type="file" name="cmnd_mat_truoc" className={classes.inputName} onChange={changeHinhMatTruoc} />
-              {review_cmnd_mat_truoc ? <img src={`${url_upload}` + review_cmnd_mat_truoc} style={{width: '250px', marginTop: '20px'}} /> : ''}
+              {review_cmnd_mat_truoc ? <img src={`${url_upload}` + review_cmnd_mat_truoc} style={{width: '250px', marginTop: '20px'}} /> : <img src={'./placeholder_add_image.png'} style={{width: '250px', marginTop: '20px'}} />}
             </div>
           </div>
           <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
             <label className={classes.label}>CMND mặt sau</label>
               <input type="file" name="cmnd_mat_sau" className={classes.inputName} onChange={changeHinhMatSau} />
-              {review_cmnd_mat_sau ? <img src={`${url_upload}` + review_cmnd_mat_sau} style={{width: '250px', marginTop: '20px'}} /> : ''}
+              {review_cmnd_mat_sau ? <img src={`${url_upload}` + review_cmnd_mat_sau} style={{width: '250px', marginTop: '20px'}} /> : <img src={'./placeholder_add_image.png'} style={{width: '250px', marginTop: '20px'}} />}
             </div>
           </div>
         </div>

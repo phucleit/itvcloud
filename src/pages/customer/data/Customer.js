@@ -62,16 +62,33 @@ export default function CustomerPage () {
         headerName: 'CMND', 
         width: 250,
         renderCell: (params) => {
+          if (params.row.cmnd_mat_truoc || params.row.cmnd_mat_sau) {
             return(
-                <div>
+              <div>
+                {
+                  params.row.cmnd_mat_truoc ? 
                     <a href={`${url_upload}` + params.row.cmnd_mat_truoc} target="_blank">
-                        <img src={`${url_upload}` + params.row.cmnd_mat_truoc} style={{width: '120px', padding: '5px'}} />
+                      <img src={`${url_upload}` + params.row.cmnd_mat_truoc} style={{width: '120px', padding: '5px'}} />
                     </a>
+                  : <img src={'./placeholder_add_image.png'} style={{width: '120px', padding: '5px'}} />
+                }
+
+                {
+                  params.row.cmnd_mat_sau ? 
                     <a href={`${url_upload}` + params.row.cmnd_mat_sau} target="_blank">
-                        <img src={`${url_upload}` + params.row.cmnd_mat_sau} style={{width: '120px', padding: '5px'}} />
+                      <img src={`${url_upload}` + params.row.cmnd_mat_sau} style={{width: '120px', padding: '5px'}} />
                     </a>
-                </div>
+                  : <img src={'./placeholder_add_image.png'} style={{width: '120px', padding: '5px'}} />
+                }
+              </div>
             );
+          } else {
+            return(
+              <div>
+                <img src={'./placeholder_add_image.png'} style={{width: '120px', padding: '5px'}} />
+              </div>
+            );
+          }
         }
     },
     {
