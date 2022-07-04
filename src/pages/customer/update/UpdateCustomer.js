@@ -39,6 +39,8 @@ export default function UpdateCustomer () {
 
   const [ review_cmnd_mat_truoc, setReviewHinhMatTruoc ] = useState('');
   const [ review_cmnd_mat_sau, setReviewHinhMatSau ] = useState('');
+  const [ isMatTruocPicked, setIsMatTruocPicked ] = useState(false);
+  const [ isMatSauPicked, setIsMatSauPicked ] = useState(false);
 
   useEffect(() => {
     loadCustomer();
@@ -64,6 +66,16 @@ export default function UpdateCustomer () {
     var date = new Date(timeStamp).toLocaleDateString("vi-VI");
     return date;
   }
+
+  const changeHinhMatTruoc = (event) => {
+		setHinhMatTruoc(event.target.files[0]);
+		setIsMatTruocPicked(true);
+	};
+
+  const changeHinhMatSau = (event) => {
+		setHinhMatSau(event.target.files[0]);
+		setIsMatSauPicked(true);
+	};
 
   const handleUpdateCustomer = (e) => {
     e.preventDefault();
@@ -99,8 +111,15 @@ export default function UpdateCustomer () {
     formDataTask.append('email', email);
     formDataTask.append('ngaysinh', ngaysinh);
     formDataTask.append('cmnd', cmnd);
-    formDataTask.append('cmnd_mat_truoc', cmnd_mat_truoc);
-    formDataTask.append('cmnd_mat_sau', cmnd_mat_sau);
+
+    if (isMatTruocPicked == true) {
+      formDataTask.append('cmnd_mat_truoc', cmnd_mat_truoc);
+    }
+
+    if (isMatSauPicked == true) {
+      formDataTask.append('cmnd_mat_sau', cmnd_mat_sau);
+    }
+    
     formDataTask.append('diachi', diachi);
     formDataTask.append('thanhpho', thanhpho);
     formDataTask.append('quocgia', quocgia);
@@ -178,14 +197,14 @@ export default function UpdateCustomer () {
           <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
               <label className={classes.label}>CMND mặt trước</label>
-              <input type="file" name="cmnd_mat_truoc" className={classes.inputName} onChange={(e) => setHinhMatTruoc(e.target.files[0])} />
+              <input type="file" name="cmnd_mat_truoc" className={classes.inputName} onChange={changeHinhMatTruoc} />
               {review_cmnd_mat_truoc ? <img src={`${url_upload}` + review_cmnd_mat_truoc} style={{width: '250px', marginTop: '20px'}} /> : ''}
             </div>
           </div>
           <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
             <label className={classes.label}>CMND mặt sau</label>
-              <input type="file" name="cmnd_mat_sau" className={classes.inputName} onChange={(e) => setHinhMatSau(e.target.files[0])} />
+              <input type="file" name="cmnd_mat_sau" className={classes.inputName} onChange={changeHinhMatSau} />
               {review_cmnd_mat_sau ? <img src={`${url_upload}` + review_cmnd_mat_sau} style={{width: '250px', marginTop: '20px'}} /> : ''}
             </div>
           </div>
