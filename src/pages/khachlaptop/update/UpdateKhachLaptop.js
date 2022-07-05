@@ -48,7 +48,7 @@ export default function UpdateKhachLaptop () {
     setNoidung(result.data.noidung);
     setChiphi(result.data.chiphi);
     setTrangthai(result.data.trangthai);
-    setPhuongthuctt(result.data.phuongthuctt);
+    setPhuongthuctt(result.data.phuongthucthanhtoan);
   };
 
   const handleUpdateKhachLaptop = (e) => {
@@ -128,45 +128,75 @@ export default function UpdateKhachLaptop () {
     <>
       <PageTitle title="Cập nhật khách laptop" />
       <div className={classes.newUserForm}>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Họ tên</label>
-            <input type="text" name="hoten" className={classes.inputName} value={hoten} onChange={(e) => setHoten(e.target.value)} placeholder='Nhập họ tên...' />
+        <div className="row">
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Họ tên</label>
+              <input type="text" name="hoten" className={classes.inputName} value={hoten} onChange={(e) => setHoten(e.target.value)} placeholder='Nhập họ tên...' />
+            </div>
+          </div>
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Số điện thoại</label>
+              <input type="text" name="phone" className={classes.inputName} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Nhập số điện thoại...' />
+            </div>
+          </div>
         </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Số điện thoại</label>
-            <input type="text" name="phone" className={classes.inputName} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Nhập số điện thoại...' />
+        <div className="row">
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Địa chỉ</label>
+              <input type="text" name="diachi" className={classes.inputName} value={diachi} onChange={(e) => setDiachi(e.target.value)} placeholder='Nhập địa chỉ...' />
+            </div>
+          </div>
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Loại máy</label>
+              <input type="text" name="loaimay" className={classes.inputName} value={loaimay} onChange={(e) => setLoaimay(e.target.value)} placeholder='Nhập loại máy...' />
+            </div>
+          </div>
         </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Địa chỉ</label>
-            <input type="text" name="diachi" className={classes.inputName} value={diachi} onChange={(e) => setDiachi(e.target.value)} placeholder='Nhập địa chỉ...' />
+        <div className="row">
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Mã máy</label>
+              <input type="text" name="mamay" className={classes.inputName} value={mamay} onChange={(e) => setMamay(e.target.value)} placeholder='Nhập mã máy...' />
+            </div>
+          </div>
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Tình trạng máy</label>
+              <input type="text" name="tinhtrangmay" className={classes.inputName} value={tinhtrangmay} onChange={(e) => setTinhtrangmay(e.target.value)} placeholder='Nhập tình trạng máy...' />
+            </div>
+          </div>
         </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Loại máy</label>
-            <input type="text" name="loaimay" className={classes.inputName} value={loaimay} onChange={(e) => setLoaimay(e.target.value)} placeholder='Nhập loại máy...' />
+        <div className="row">
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Nội dung</label>
+              <input type="text" name="noidung" className={classes.inputName} value={noidung} onChange={(e) => setNoidung(e.target.value)} placeholder='Nhập nội dung...' />
+            </div>
+          </div>
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Chi phí</label>
+              <input type="text" name="chiphi" className={classes.inputName} value={chiphi} onChange={(e) => setChiphi(e.target.value)} placeholder='Nhập chi phí...' />
+            </div>
+          </div>
         </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Mã máy</label>
-            <input type="text" name="mamay" className={classes.inputName} value={mamay} onChange={(e) => setMamay(e.target.value)} placeholder='Nhập mã máy...' />
-        </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Tình trạng máy</label>
-            <input type="text" name="tinhtrangmay" className={classes.inputName} value={tinhtrangmay} onChange={(e) => setTinhtrangmay(e.target.value)} placeholder='Nhập tình trạng máy...' />
-        </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Nội dung</label>
-            <input type="text" name="noidung" className={classes.inputName} value={noidung} onChange={(e) => setNoidung(e.target.value)} placeholder='Nhập nội dung...' />
-        </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Chi phí</label>
-            <input type="text" name="chiphi" className={classes.inputName} value={chiphi} onChange={(e) => setChiphi(e.target.value)} placeholder='Nhập chi phí...' />
-        </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Trạng thái</label>
-            <input type="text" name="trangthai" className={classes.inputName} value={trangthai} onChange={(e) => setTrangthai(e.target.value)} placeholder='Nhập trạng thái...' />
-        </div>
-        <div className={classes.newUserItem}>
-            <label className={classes.label}>Phương thức thanh toán</label>
-            <input type="text" name="phuongthuctt" className={classes.inputName} value={phuongthuctt} onChange={(e) => setPhuongthuctt(e.target.value)} placeholder='Nhập phương thức thanh toán...' />
+        <div className="row">
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Trạng thái</label>
+              <input type="text" name="trangthai" className={classes.inputName} value={trangthai} onChange={(e) => setTrangthai(e.target.value)} placeholder='Nhập trạng thái...' />
+            </div>
+          </div>
+          <div className="col medium-6 small-12 large-6">
+            <div className={classes.newUserItem}>
+              <label className={classes.label}>Phương thức thanh toán</label>
+              <input type="text" name="phuongthuctt" className={classes.inputName} value={phuongthuctt} onChange={(e) => setPhuongthuctt(e.target.value)} placeholder='Nhập phương thức thanh toán...' />
+            </div>
+          </div>
         </div>
         <Button
           variant="contained"

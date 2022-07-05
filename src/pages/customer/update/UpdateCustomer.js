@@ -210,24 +210,16 @@ export default function UpdateCustomer () {
           </div>
         </div>
         <div className="row">
-          <div className="col medium-12 small-12 large-12">
+          <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
               <label className={classes.label}>Địa chỉ (*)</label>
               <input type="text" name="diachi" className={classes.inputName} value={diachi} onChange={(e) => setDiaChi(e.target.value)} placeholder='Nhập địa chỉ...' />
             </div>
           </div>
-        </div>
-        <div className="row">
           <div className="col medium-6 small-12 large-6">
             <div className={classes.newUserItem}>
               <label className={classes.label}>Thành phố</label>
               <input type="text" name="thanhpho" className={classes.inputName} value={thanhpho} onChange={(e) => setThanhPho(e.target.value)} placeholder='Nhập thành phố...' />
-            </div>
-          </div>
-          <div className="col medium-6 small-12 large-6">
-            <div className={classes.newUserItem}>
-              <label className={classes.label}>Quốc gia</label>
-              <input type="text" name="quocgia" className={classes.inputName} value={quocgia} onChange={(e) => setQuocGia(e.target.value)} placeholder='Nhập quốc gia...' />
             </div>
           </div>
         </div>
