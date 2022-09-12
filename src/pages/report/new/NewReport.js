@@ -6,14 +6,11 @@ import axios from 'axios';
 import {
   useHistory,
 } from "react-router-dom";
-import { FileUploader } from "react-drag-drop-files";
 
 // components
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import useStyles from "./styles";
 import { URL } from '../../../constants';
-
-const fileTypes = ["JPG", "PNG", "GIF"];
 
 export default function NewReport () {
   var classes = useStyles();
@@ -26,10 +23,6 @@ export default function NewReport () {
   const [ tinhtrangmay, setTinhTrangMay ] = useState('');
   const [ image, setImage ] = useState('');
   const [ noidung, setNoiDung ] = useState('');
-
-  const handleChange = (file) => {
-    setImage(file[0].name);
-  };
 
   const handleAddReport = (e) => {
     e.preventDefault();
@@ -120,7 +113,6 @@ export default function NewReport () {
             <div className={classes.newUserItem}>
               <label className={classes.label}>Hình ảnh máy</label>
               <input type="file" multiple name="image" className={classes.inputName} onChange={(e) => setImage(e.target.files[0])} />
-              {/* <FileUploader handleChange={handleChange} name="image" types={fileTypes} multiple="true" /> */}
             </div>
           </div>
         </div>

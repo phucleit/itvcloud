@@ -8,7 +8,8 @@ import {
   Settings as SettingsIcon,
   Backup as BackupIcon,
   ListAlt as ListAltIcon,
-  Group as GroupIcon 
+  Group as GroupIcon,
+  AddShoppingCart as AddShoppingCartIcon
 } from "@material-ui/icons";
 import WebIcon from '@material-ui/icons/Web';
 import { useTheme } from "@material-ui/styles";
@@ -42,16 +43,16 @@ const structure = [
       { label: "Thêm nhóm người dùng", link: "/app/new-role" },
     ],
   },
-  {
-    id: 2,
-    label: "Quản lý khách laptop",
-    link: "/app/khach-laptop",
-    icon: <LaptopIcon />,
-    children: [
-      { label: "Danh sách", link: "/app/khach-laptop" },
-      { label: "Thêm mới", link: "/app/them-khach-laptop" },
-    ],
-  },
+  // {
+  //   id: 2,
+  //   label: "Quản lý khách laptop",
+  //   link: "/app/khach-laptop",
+  //   icon: <LaptopIcon />,
+  //   children: [
+  //     { label: "Danh sách", link: "/app/khach-laptop" },
+  //     { label: "Thêm mới", link: "/app/them-khach-laptop" },
+  //   ],
+  // },
   {
     id: 3,
     label: "Quản lý khách website",
@@ -68,6 +69,7 @@ const structure = [
     link: "/app/dich-vu",
     icon: <SettingsIcon />,
     children: [
+      { label: "Hosting", link: "/app/hosting" },
       { label: "Danh sách", link: "/app/dich-vu" },
       { label: "Thêm mới", link: "/app/them-dich-vu" },
     ],
@@ -82,17 +84,30 @@ const structure = [
       { label: "Thêm mới", link: "/app/them-khach-hang" },
     ],
   },
-  { 
-    id: 6, 
-    label: "Tạo báo cáo", 
-    link: "/app/bao-cao", 
-    icon: <ListAltIcon />,
+  {
+    id: 6,
+    label: "Đăng ký mới",
+    link: "/app/dang-ky-moi",
+    icon: <AddShoppingCartIcon />,
     children: [
-      { label: "Danh sách", link: "/app/bao-cao" },
-      { label: "Thêm mới", link: "/app/them-bao-cao" },
+      { label: "Đăng ký Tên Miền", link: "/app/them-khach-hang" },
+      { label: "Đăng ký Hosting", link: "/app/them-hosting" },
+      { label: "Đăng ký Email Server", link: "/app/them-khach-hang" },
+      { label: "Đăng ký SSL", link: "/app/them-khach-hang" },
+      { label: "Đăng ký Cloud Server", link: "/app/them-khach-hang" },
     ],
   },
-  { id: 7, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
+  // { 
+  //   id: 7, 
+  //   label: "Tạo báo cáo", 
+  //   link: "/app/bao-cao", 
+  //   icon: <ListAltIcon />,
+  //   children: [
+  //     { label: "Danh sách", link: "/app/bao-cao" },
+  //     { label: "Thêm mới", link: "/app/them-bao-cao" },
+  //   ],
+  // },
+  // { id: 7, label: "Cấu hình hệ thống", link: "", icon: <BackupIcon /> },
 ];
 
 function Sidebar({ location }) {

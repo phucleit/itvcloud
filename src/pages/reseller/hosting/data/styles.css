@@ -1,0 +1,15 @@
+.product-item h1 {
+    font-size: 30px;
+    color: #226a98;
+    font-weight: bold;
+}
+
+.product-item h4 {
+    font-size: 20px;
+    color: #f00;
+    font-weight: bold;
+}
+
+.product-item .icon-edit {
+    float: right;
+}

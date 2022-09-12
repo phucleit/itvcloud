@@ -36,6 +36,9 @@ import UpdateReport from '../../pages/report/update';
 import CustomerPage from '../../pages/customer/data';
 import NewCustomer from '../../pages/customer/new';
 import UpdateCustomer from '../../pages/customer/update';
+import Hosting from '../../pages/reseller/hosting/data';
+import NewHosting from '../../pages/reseller/hosting/new';
+import UpdateHosting from '../../pages/reseller/hosting/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -79,6 +82,9 @@ function Layout(props) {
               <Route path="/app/khach-hang" component={CustomerPage} />
               <Route path="/app/them-khach-hang" component={NewCustomer} />
               <Route path="/app/sua-khach-hang/:id" component={UpdateCustomer} />
+              <Route path="/app/hosting" component={Hosting} />
+              <Route path="/app/them-hosting" component={NewHosting} />
+              <Route path="/app/sua-hosting/:id" component={UpdateHosting} />
             </Switch>
             <Box
               mt={5}

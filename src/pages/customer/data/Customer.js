@@ -52,7 +52,7 @@ export default function CustomerPage () {
         renderCell: (params) => {
             return(
                 <>
-                    {params.row.cmnd}, {params.row.diachi}, {params.row.thanhpho}, {params.row.quocgia}
+                    {params.row.cmnd}, {params.row.diachi}, {params.row.thanhpho}
                 </>
             );
         }
