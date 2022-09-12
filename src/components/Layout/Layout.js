@@ -39,6 +39,9 @@ import UpdateCustomer from '../../pages/customer/update';
 import Hosting from '../../pages/reseller/hosting/data';
 import NewHosting from '../../pages/reseller/hosting/new';
 import UpdateHosting from '../../pages/reseller/hosting/update';
+import Email from '../../pages/reseller/email/data';
+import NewEmail from '../../pages/reseller/email/new';
+import UpdateEmail from '../../pages/reseller/email/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -85,6 +88,9 @@ function Layout(props) {
               <Route path="/app/hosting" component={Hosting} />
               <Route path="/app/them-hosting" component={NewHosting} />
               <Route path="/app/sua-hosting/:id" component={UpdateHosting} />
+              <Route path="/app/email" component={Email} />
+              <Route path="/app/them-email" component={NewEmail} />
+              <Route path="/app/sua-email/:id" component={UpdateEmail} />
             </Switch>
             <Box
               mt={5}

@@ -18,15 +18,15 @@ import "./styles.css";
 import PageTitle from "../../../../components/PageTitle/PageTitle";
 import { URL } from '../../../../constants';
 
-export default function HostingPage () {
+export default function EmailPage () {
   const [ data, setData ] = useState([]);
 
   useEffect(() => {
-    loadHosting();
+    loadEmail();
   }, []);
 
-  const loadHosting = async () => {
-    const result = await axios.get(`${URL}/api/hosting`);
+  const loadEmail = async () => {
+    const result = await axios.get(`${URL}/api/email`);
     setData(result.data);
   };
 
@@ -40,8 +40,8 @@ export default function HostingPage () {
 
   return (
     <>
-      <PageTitle title="Danh sách Hosting" button={(
-        <Link to="/app/them-hosting">
+      <PageTitle title="Danh sách Email" button={(
+        <Link to="/app/them-email">
           <Button
             variant="contained"
             size="medium"
@@ -57,13 +57,13 @@ export default function HostingPage () {
                 return (
                     <Grid item xs={3}>
                         <Item className="product-item">
-                            <h1>{item.tengoi} <Link to={"/app/sua-hosting/" + item.id} className="icon-edit"><EditIcon /></Link></h1>
-                            <p>Dung lượng: <strong>{item.dungluong} [SSD]</strong></p>
-                            <p>Băng thông: <strong>{item.bangthong}</strong></p>
-                            <p>Sub-domain: <strong>{item.subdomain}</strong></p>
-                            <p>Email: <strong>{item.email}</strong></p>
-                            <p>FTP: <strong>{item.ftp}</strong></p>
-                            <p>Database: <strong>{item.database}</strong></p>
+                            <h1>{item.tengoi} <Link to={"/app/sua-email/" + item.id} className="icon-edit"><EditIcon /></Link></h1>
+                            <p>Dung lượng: <strong>{item.dungluong}</strong></p>
+                            <p>Địa chỉ Email: <strong>Không giới hạn</strong></p>
+                            <p>Mã hóa SSL</p>
+                            <p>Spam Assassin & Antivirus</p>
+                            <p>Catch all</p>
+                            <p>SPF / DKIM / DomainKeys</p>
                             <p>Giá chỉ từ</p>
                             <h4>{(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.chiphi))} / tháng</h4>
                             <p>(Giá trên chưa bao gồm VAT)</p>

@@ -70,6 +70,7 @@ const structure = [
     icon: <SettingsIcon />,
     children: [
       { label: "Hosting", link: "/app/hosting" },
+      { label: "Email Server", link: "/app/email" },
       { label: "Danh sách", link: "/app/dich-vu" },
       { label: "Thêm mới", link: "/app/them-dich-vu" },
     ],
@@ -92,7 +93,7 @@ const structure = [
     children: [
       { label: "Đăng ký Tên Miền", link: "/app/them-khach-hang" },
       { label: "Đăng ký Hosting", link: "/app/them-hosting" },
-      { label: "Đăng ký Email Server", link: "/app/them-khach-hang" },
+      { label: "Đăng ký Email Server", link: "/app/them-email" },
       { label: "Đăng ký SSL", link: "/app/them-khach-hang" },
       { label: "Đăng ký Cloud Server", link: "/app/them-khach-hang" },
     ],
