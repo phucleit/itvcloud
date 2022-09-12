@@ -53,7 +53,7 @@ export default function NewEmail () {
 
   return (
     <>
-      <PageTitle title="Thêm Email Server" />
+      <PageTitle title="Thêm Email Doanh nghiệp" />
       <div className={classes.newUserForm}>
         <div className="row">
           <div className="col medium-4 small-12 large-4">

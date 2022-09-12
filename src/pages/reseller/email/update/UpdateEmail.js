@@ -70,7 +70,7 @@ export default function UpdateEmail () {
 
   return (
     <>
-      <PageTitle title="Cập nhật Email Server" />
+      <PageTitle title="Cập nhật Email Doanh Nghiệp" />
       <div className={classes.newUserForm}>
         <div className="row">
           <div className="col medium-4 small-12 large-4">

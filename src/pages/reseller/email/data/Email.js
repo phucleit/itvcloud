@@ -40,7 +40,7 @@ export default function EmailPage () {
 
   return (
     <>
-      <PageTitle title="Danh sách Email" button={(
+      <PageTitle title="Danh sách Email Doanh Nghiệp" button={(
         <Link to="/app/them-email">
           <Button
             variant="contained"

@@ -85,7 +85,7 @@ export default function UpdateHosting () {
 
   return (
     <>
-      <PageTitle title="Cập nhật hosting" />
+      <PageTitle title="Cập nhật Hosting" />
       <div className={classes.newUserForm}>
         <div className="row">
           <div className="col medium-6 small-12 large-6">

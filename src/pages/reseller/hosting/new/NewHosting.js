@@ -63,7 +63,7 @@ export default function NewHosting () {
 
   return (
     <>
-      <PageTitle title="Thêm hosting" />
+      <PageTitle title="Thêm Hosting" />
       <div className={classes.newUserForm}>
         <div className="row">
           <div className="col medium-6 small-12 large-6">
