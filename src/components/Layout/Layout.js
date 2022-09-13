@@ -42,6 +42,9 @@ import UpdateHosting from '../../pages/reseller/hosting/update';
 import Email from '../../pages/reseller/email/data';
 import NewEmail from '../../pages/reseller/email/new';
 import UpdateEmail from '../../pages/reseller/email/update';
+import SSL from '../../pages/reseller/ssl/data';
+import NewSSL from '../../pages/reseller/ssl/new';
+import UpdateSSL from '../../pages/reseller/ssl/update';
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
@@ -91,6 +94,9 @@ function Layout(props) {
               <Route path="/app/email" component={Email} />
               <Route path="/app/them-email" component={NewEmail} />
               <Route path="/app/sua-email/:id" component={UpdateEmail} />
+              <Route path="/app/ssl" component={SSL} />
+              <Route path="/app/them-ssl" component={NewSSL} />
+              <Route path="/app/sua-ssl/:id" component={UpdateSSL} />
             </Switch>
             <Box
               mt={5}

@@ -1,0 +1,7 @@
+{
+    "name": "NewSSL",
+    "version": "0.0.0",
+    "main": "NewSSL.js",
+    "private": true
+  }
+  
